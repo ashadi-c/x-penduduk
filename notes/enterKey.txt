@@ -1,0 +1,7 @@
+txt.on('specialkey', enterFunct); // di taro di listener juga bisa, terserah enaknya gimana
+
+function enterFunct(f, e) {
+if (e.getKey() == e.ENTER){
+// anotherTxt.focus();
+}
+}

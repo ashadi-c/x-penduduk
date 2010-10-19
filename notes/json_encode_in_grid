@@ -1,0 +1,30 @@
+
+// mengambil semua record dalam grid 
+       var data = [];
+       store.each(function(r, i) {
+           var o = r.copy(); //mengcopy record agar aslinya tidak dirubah...
+           o = o.data;
+           for (cnt in o)
+               if (Ext.isDate(o[cnt]))
+                   o[cnt] =  Ext.util.Format.date(o[cnt],'d/m/Y');
+           data.push(o);
+       }, this);
+       alert(Ext.encode(data));
+       store.commitChanges();
+       
+       
+//mengambil record yang hanya dimodifikasi 
+       var records = store.getModifiedRecords();
+       if(!records.length)
+           return;
+       var data = [];
+       Ext.each(records, function(r, i) {
+           var o = r.copy(); //mengcopy record agar aslinya tidak dirubah...
+           o = o.data;
+           for (cnt in o)
+               if (Ext.isDate(o[cnt]))
+                   o[cnt] =  Ext.util.Format.date(o[cnt],'d/m/Y');
+           data.push(o);
+       }, this);
+       alert(Ext.encode(data));
+       store.commitChanges();

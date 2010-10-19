@@ -1,0 +1,4 @@
+SELECT DATE_FORMAT(FROM_DAYS(DATEDIFF(NOW(),”1978-03-28?)), ‘%Y’)+0 AS age
+%Y
+%m
+%d

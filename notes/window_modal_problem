@@ -1,0 +1,3 @@
+mengatasi masalah pada windows gak bisa ditutup: 
+
+jalankan listeners window.destroy pada main panelnya 

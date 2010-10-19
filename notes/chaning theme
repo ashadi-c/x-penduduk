@@ -1,0 +1,6 @@
+
+<link rel="stylesheet" id="theme" href="../css/ytheme-gray.css" />
+
+Then you can call:
+
+Ext.util.CSS.swapStyleSheet('theme', '../css/ytheme-aero.css');

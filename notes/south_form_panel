@@ -1,0 +1,16 @@
+                       id:'form-edit',
+                       title:'Form Edit',
+                       bodyStyle:"padding: 4px;",
+                       xtype:'form',
+                       labelAlign:'top',
+                       labelWidth:70,
+                       defaults: {width: 170,labelSeparator:''},
+                       defaultType: 'textfield',
+                       autoScroll:true,
+                       items : [
+                           {
+                               fieldLabel:'ID Emp',
+                               name: 'emp_id',
+                               allowBlank:true
+                           },
+              

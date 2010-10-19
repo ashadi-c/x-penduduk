@@ -1,0 +1,4 @@
+untuk menghilangkan bugnya
+show dulu windowsnya
+win.show();
+frm_item_win.getForm().setValues(from_grid);

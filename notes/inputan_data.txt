@@ -1,0 +1,18 @@
+
+NO KK : text
+NO KTP : TExt
+Nama : text
+Kelamin : Combo 
+Tanggal Lahir : date Field
+Tempat Lahir : text 
+Status Kawin : Combo 
+Agama : Combo
+==================================
+Pendidikan Combo 
+Pekerjaan : Combo 
+baca_tulis : combo
+RT : text
+RW : text
+DUSUN : combo 
+status : cuma hidup / disable
+foto : textbox

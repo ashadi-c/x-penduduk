@@ -1,0 +1,34 @@
+//cara mecari data berguna untuk menghapus
+function getChild(node){
+    data.push(node.id); 
+    node.eachChild(
+        function(r,i){
+           getChild(r); 
+       }
+    )
+}
+//cara panggil 
+var data= []; 
+node = tree.getSelectionModel().getSelectedNode();
+if (node)
+	getChild(node);
+Ext.encode(data);
+
+
+//cara nambah menu 
+node = tree.getSelectionModel().getSelectedNode();
+if (node)
+	if (node.isLeaf() ==false) {
+			node.appendChild(
+					new Ext.tree.TreeNode({
+							text:'text kamu', 
+							iconCls:'iconnya',
+							id: 'idnya.1',
+							leaf:true //untuk menambah submenu tinggal hilangkan baris ini saya  
+					})
+			); 
+		node.expand();
+		lastnode = node.lastChild; 
+		lastnode.select();
+	}
+

@@ -1,0 +1,4 @@
+===reload tree panel 
+
+tree.getLoader().dataUrl = 'newurl.html';
+tree.getRootNode().reload();

@@ -1,0 +1,42 @@
+           {
+               layout:'border',
+               region:'center',
+               border:false,
+               margins:'3 0 3 3',
+               items : [
+                   grid,
+                   {
+                       id: 'detail-grid',
+                       region:'south',
+                       split:true,
+                       title:'South Panel',
+                       collapsible: true,
+                       collapsed:true,
+                       margins:'0',
+                       height:200,
+                       html:'coba aja ah',
+                       cmargins:'3 0 0 0',
+                       listeners : {
+                           collapse : function() {
+                               Ext.getCmp('btn-detail').toggle(false);
+                           },
+                           expand : function() {
+                               Ext.getCmp('btn-detail').toggle(true);
+                           }
+                       }
+                   }
+               ]
+           }, {
+                         region:'east',
+               split:true,
+               title:'East Panel',
+               collapsible:true,
+               collapsed:true,
+               margins:'3 3 3 0',
+               cmargins:'3 3 3 3',
+               width:200,
+               html:'coba aja ah'
+           }
+
+
+	

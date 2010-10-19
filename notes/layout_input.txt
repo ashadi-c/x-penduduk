@@ -1,0 +1,18 @@
+id : hidden 
+no_ktp: 
+no_kk: 
+nama : text-box - ada pilihannya 
+kelamin : combo box 
+tempat lahir : text box 
+tanggal lahir : date_field 
+status kawin : combo box 
+agama : combo box 
+pendidikan : combo box 
+pekerjaan : text box 
+baca_tulis : check box 
+h_keluarga : hidden : value : kepala Keluarga 
+rt/rw: combo box 
+dusun : combo box 
+status : langsung hidup 
+
+dibagi dua kolom 6/6 

@@ -1,0 +1,49 @@
+This posts helped me.
+
+So, I want to add a part of my code. Perhaps it could be useful to someone.
+
+Json received data:
+
+
+{"total":1, "Lines":[{"Line":{"id":1, "order_number":166006, "line_status":"NP"}}]}
+
+
+Data Store:
+
+
+var ds = new Ext.data.GroupingStore({
+url: 'url.php',
+reader: new Ext.data.JsonReader({
+root:'Lines',
+totalProperty: 'total',
+id: 'Line.id',
+fields: [
+{name: 'Line.id'},
+{name: 'Line.order_number'},
+{name: 'Line.line_status'}
+]
+}),
+sortInfo: {field: 'Line.order_number', direction: 'ASC'},
+groupField: 'Line.line_status'
+});
+
+
+Or if you preffer, you can create a record and a reader, too:
+
+
+var linesRecord = Ext.data.Record.create([
+{name: 'Line.id'},
+{name: 'Line.order_number'},
+{name: 'Line.line_status'}
+]);
+
+var ds = new Ext.data.GroupingStore({
+url: 'url.php',
+reader: new Ext.data.JsonReader({
+root:'Lines',
+totalProperty: 'total',
+id: 'Line.id'
+}, linesRecord),
+sortInfo: {field: 'Line.order_number', direction: 'ASC'},
+groupField: 'Line.line_status'
+});

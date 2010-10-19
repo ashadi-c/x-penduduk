@@ -1,0 +1,4 @@
+untuk menyembunyikan kolom didalam grid 
+waktu definisi columnModel 
+
+{dataIndex: 'id', hidden:true,hideable:false}

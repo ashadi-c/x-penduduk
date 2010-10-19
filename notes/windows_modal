@@ -1,0 +1,35 @@
+var city = new Ext.form.TriggerField({
+   id :'frm-city',
+   fieldLabel: 'City',
+   name:'city',
+   labelSeparator:'',
+   width:120,
+   allowBlank:true
+});
+
+var dsCity = new Ext.data.JsonStore({
+   url:ajax_url,
+   totalProperty: 'total',
+   root: 'data',
+   fields: [
+     {name:'city_id'},
+     {name:'city_name'},
+   ],
+   sortInfo: {field: 'city_name', direction: 'ASC'},
+   remoteSort: true,
+   baseParams: {task:'getCity'}
+});
+
+
+var filterCity = new Ext.grid.GridFilters({
+filters:[
+   {type: 'string',  dataIndex: 'city_name'}
+   ]
+});
+
+var cmCity = new Ext.grid.ColumnModel([
+   {dataIndex: 'city_id', hidden:true,hideable:false,menuDisabled:true},
+   {dataIndex: 'city_name', header: 'City'}
+]);
+
+cmCity.defaultSortable = true;

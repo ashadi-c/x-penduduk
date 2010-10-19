@@ -1,0 +1,8 @@
+
+ untuk membuat layout mempunya dua buah tampilan yang dipecah 
+ layout :'border'
+ itemnya harus ada minimal region :'center'
+ center : tidak ada heightnya 
+ yang perlu didefinisikan height/width adalah north/south/east/west
+ 	layout harus didefinisikan jika ada komponen yang tidak muncul misal layout : fit/border 
+	definisi di komponen parentnya bukan di formnya 

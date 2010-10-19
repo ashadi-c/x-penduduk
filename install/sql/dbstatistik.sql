@@ -1,0 +1,1193 @@
+-- phpMyAdmin SQL Dump
+-- version 3.2.0.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Waktu pembuatan: 07. April 2010 jam 21:56
+-- Versi Server: 5.1.37
+-- Versi PHP: 5.3.0
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Database: `dbstatistik`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `iconcls`
+--
+
+CREATE TABLE IF NOT EXISTS `iconcls` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(32) NOT NULL,
+  `clsname` varchar(128) NOT NULL,
+  `icon` varchar(128) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=86 ;
+
+--
+-- Dumping data untuk tabel `iconcls`
+--
+
+INSERT INTO `iconcls` (`id`, `title`, `clsname`, `icon`) VALUES
+(1, 'Computer', 'base', 'application_cascade.png'),
+(3, 'Check Password', 'chk-pwd', 'user_edit.png'),
+(4, 'User Female', 'user-female', 'user_female.png'),
+(50, 'user-manager', 'user-comment', 'user_go.png'),
+(6, 'Logout', 'logout', 'key_go.png'),
+(7, 'Login', 'login', 'lock_open.png'),
+(8, 'Lock', 'lock', 'lock.png'),
+(9, 'Browse', 'browse', 'grid.png'),
+(10, 'Config', 'conf', 'cog_edit.png'),
+(49, 'Application', 'app', 'plugin.gif'),
+(12, 'Refresh', 'drop', 'table_refresh.png'),
+(62, 'Duplicate', 'duplicate', 'table_multiple.png'),
+(14, 'Menu Panel', 'mymenu', 'application_side_tree.png'),
+(15, 'Navigator', 'navigator', 'application_side_boxes.png'),
+(16, 'Setting', 'setting', 'application_get.png'),
+(17, 'Form', 'form', 'application_form.png'),
+(18, 'Add data', 'add-data', 'add.png'),
+(19, 'Table Delete', 'table-delete', 'table_delete.png'),
+(20, 'Table Addc', 'table-add', 'table_add.png'),
+(21, 'Row Delete', 'row-delete', 'cancel.png'),
+(22, 'App Grid', 'app-grid', 'table.png'),
+(23, 'Form Edit', 'form-edit', 'application_form_edit.png'),
+(24, 'Report Mode', 'report-mode', 'report_disk.png'),
+(25, 'Report Pdf', 'report-pdf', 'page_white_acrobat.png'),
+(26, 'Report Xls', 'report-xls', 'page_white_excel.png'),
+(27, 'Parent Form', 'parent-form', 'vcard.png'),
+(28, 'Arrow Down', 'arrow-down', 'arrow_down.png'),
+(29, 'App Add', 'app-add', 'plugin_add.gif'),
+(30, 'Panel Collapse', 'panel-collapse', 'application_put.png'),
+(31, 'Image Add', 'image-add', 'image_add.png'),
+(32, 'Db Table', 'db-table', 'database_table.png'),
+(33, 'Db Refresh', 'db-refresh', 'database_refresh.png'),
+(34, 'Menu Add', 'menu-add', 'page.png'),
+(35, 'Sub Menu Add', 'submenu-add', 'page_add.png'),
+(36, 'Menu Remove', 'menu-remove', 'page_delete.png'),
+(37, 'Save', 'icon-save', 'disk.png'),
+(38, 'Accept', 'accept', 'accept.png'),
+(39, 'Js File', 'js-file', 'page_white_code.png'),
+(40, 'Php File', 'php-file', 'page_white_php.png'),
+(41, 'Image', 'image', 'images.png'),
+(55, 'rss', 'rss', 'rss.png'),
+(45, 'Event Menu', 'event-menu', 'attach.png'),
+(48, 'Css Refresh', 'css-refresh', 'css_valid.png'),
+(52, 'error', 'error-cls', 'error.png'),
+(61, 'autosave', 'autosave', 'server_link.png'),
+(64, 'pindah-kk', 'pindah-kk', 'book_go.png'),
+(65, 'kk-baru', 'kk-baru', 'book_key.png'),
+(66, 'split-kk', 'split-kk', 'book_open.png'),
+(67, 'csv', 'csv', 'page_white_text.png'),
+(68, 'upload', 'upload', 'page_attach.png'),
+(69, 'group-manager', 'group-manager', 'group.png'),
+(70, 'group-delete', 'group-delete', 'group_delete.png'),
+(71, 'group-add', 'group-add', 'group_add.png'),
+(72, 'user-delete', 'user-delete', 'user_delete.gif'),
+(73, 'user-add', 'user-add', 'user_add.gif'),
+(74, 'admin-page', 'admin-page', 'cog_error.png'),
+(75, 'menu-disabled', 'check-none', 'plugin_disabled.png'),
+(77, 'statistik', 'stat', 'chart_bar.png'),
+(78, 'stat-line', 'stat-line', 'chart_curve.png'),
+(79, 'stat-pie', 'stat-pie', 'chart_pie.png'),
+(80, 'stat-bar', 'stat-bar', 'chart_bar_edit.png'),
+(82, 'stat-line2', 'stat-line2', 'chart_line.png'),
+(83, 'report-word', 'report-word', 'page_white_word.png'),
+(84, 'arr', 'arrow-up', 'arrow_up.png'),
+(85, 'sort', 'sort', 'text_padding_right.png');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `menu`
+--
+
+CREATE TABLE IF NOT EXISTS `menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) NOT NULL DEFAULT '0',
+  `title` varchar(32) NOT NULL,
+  `iconcls` varchar(32) NOT NULL,
+  `handler` varchar(128) NOT NULL,
+  `ajax` varchar(128) NOT NULL,
+  `report` varchar(128) NOT NULL,
+  `published` tinyint(1) NOT NULL DEFAULT '1',
+  `sort_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=113 ;
+
+--
+-- Dumping data untuk tabel `menu`
+--
+
+INSERT INTO `menu` (`id`, `parent_id`, `title`, `iconcls`, `handler`, `ajax`, `report`, `published`, `sort_id`) VALUES
+(1, 0, 'Input Data', 'app-add', '', '', '', 1, 1),
+(2, 0, 'Lihat Data', 'db-table', '', '', '', 1, 92),
+(3, 1, 'Input Data Penduduk', 'table-add', 'gridpenduduk.js', 'ajax.penduduk2.php', '', 1, 2),
+(4, 1, 'Form Pendatang', 'app', 'frm_datang.js', 'ajax.datang.php', '', 1, 12),
+(5, 2, 'Data Kepala Keluarga', 'app-grid', 'data_kepala_keluarga.js', 'ajax.penduduk.php', 'report_kepala.php', 1, 5),
+(6, 2, 'Data Penduduk', 'app-grid', 'data_all.js', 'ajax.penduduk.php', 'report_penduduk.php', 1, 6),
+(7, 2, 'Data Orang Meninggal', 'app-grid', 'data_death.js', 'ajax.death.php', 'report_death.php', 1, 10),
+(94, 92, 'Statistik Kelahiran', 'stat-line2', 'chart_kelahiran.js', 'ajax.stat-kelahiran.php', '', 1, 94),
+(9, 2, 'Data Orang Pindah', 'app-grid', 'data_pindah.js', 'ajax.pindah.php', 'report_pindah.php', 1, 7),
+(10, 2, 'Data Pendatang', 'app-grid', 'data_datang.js', 'ajax.datang.php', 'report_datang.php', 1, 9),
+(11, 1, 'Form Orang Meninggal', 'app', 'frm_kematian.js', 'ajax.death.php', '', 1, 82),
+(12, 1, 'Form Kelahiran', 'app', 'frm_kelahiran.js', 'ajax.kelahiran.php', 'report_kelahiran.php', 1, 11),
+(81, 1, 'Form Pindah', 'app', 'frm_pindah.js', 'ajax.pindah.php', 'report_pindah_group.php', 1, 81),
+(95, 92, 'Statistik Kematian', 'stat-line', 'chart_mati.js', 'ajax.stat-mati.php', '', 1, 97),
+(93, 92, 'Statistik Penduduk', 'stat-pie', 'chart_penduduk.js', 'ajax.stat-penduduk.php', '', 1, 93),
+(92, 0, 'Statistik Data', 'stat', '', '', '', 1, 98),
+(82, 1, 'Input Data Per kepala Keluarga', 'app', 'frm_keluarga.js', 'ajax.penduduk.php', '', 0, 3),
+(96, 92, 'Statistik Orang Pindah', 'stat-line', 'chart_pindah.js', 'ajax.stat-pindah.php', '', 1, 96),
+(97, 92, 'Statistik Pendatang', 'stat-line', 'chart_pendatang.js', 'ajax.stat-pendatang.php', '', 1, 95),
+(98, 1, 'Pengelola Foto', 'image', 'foto_manager.js', 'ajax.foto_manager.php', 'report_foto.pdf.php', 1, 4),
+(101, 106, 'Surat Penagihan', 'app', 'sppk.js', 'ajax.sppk.php', '', 0, 102),
+(102, 106, 'Surat Pembayaran', 'admin-page', 'spanpbj.js', 'ajax.spanpbj.php', 'report_spanpbj.php', 0, 107),
+(103, 0, 'Surat Menyurat', 'upload', 'surat.js', 'ajax.surat.php', 'report_surat.php', 1, 103),
+(104, 106, 'Peninjuan', 'app', 'peny.js', 'ajax.peny.php', '', 0, 111),
+(106, 0, 'Temp', 'check-none', '', '', '', 1, 106),
+(107, 106, 'Pagu', 'app', 'pagu.js', 'ajax.pagu.php', '', 1, 108),
+(108, 106, 'Trans', 'app', 'trans.js', 'ajax.trans.php', '', 1, 112),
+(112, 106, 'Realisasi Statistik', 'stat', 'realisasi.js', 'ajax.realisasi.php', '', 1, 101);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `menu_event`
+--
+
+CREATE TABLE IF NOT EXISTS `menu_event` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `menu_id` int(11) NOT NULL,
+  `event_name` varchar(128) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=96 ;
+
+--
+-- Dumping data untuk tabel `menu_event`
+--
+
+INSERT INTO `menu_event` (`id`, `menu_id`, `event_name`) VALUES
+(32, 3, 'ADD_DATA'),
+(33, 3, 'DUPLICATE_DATA'),
+(34, 3, 'DELETE_DATA'),
+(35, 3, 'UPLOAD_CSV'),
+(9, 80, 'LOCK_DATA'),
+(10, 80, 'PRINT_DATA'),
+(11, 80, 'VIEW_DATA'),
+(12, 80, 'REMOVE_DATA'),
+(13, 80, 'EDIT_DATAx'),
+(14, 80, 'ADD_DATA'),
+(41, 4, 'SAVE_DATA'),
+(42, 11, 'SAVE_DATA'),
+(43, 12, 'SAVE_DATA'),
+(40, 5, 'SAVE_PARENT'),
+(44, 12, 'REMOVE_DATA'),
+(45, 12, 'PRINT_DATA'),
+(46, 81, 'SAVE_DATA'),
+(47, 82, 'SAVE_DATA'),
+(48, 5, 'SAVE_CHILD'),
+(49, 5, 'PRINT_DATA'),
+(50, 5, 'ADD_CHILD'),
+(51, 5, 'REMOVE_DATA'),
+(52, 6, 'REMOVE_PARENT'),
+(53, 6, 'EDIT_PARENT'),
+(54, 6, 'PRINT_DATA'),
+(55, 6, 'SAVE_CHILD'),
+(56, 7, 'CANCEL_DATA'),
+(57, 7, 'EDIT_DATA'),
+(58, 7, 'PRINT_DATA'),
+(59, 9, 'REMOVE_DATA'),
+(60, 9, 'PRINT_DATA'),
+(61, 9, 'SAVE_DATA'),
+(62, 10, 'SAVE_DATA'),
+(63, 10, 'REMOVE_DATA'),
+(64, 10, 'PRINT_DATA'),
+(65, 6, 'SAVE_PARENT'),
+(67, 98, 'CHANGE_IMAGE'),
+(68, 98, 'REMOVE_PIC'),
+(69, 98, 'PRINT_DATA'),
+(70, 9, 'SURAT_PINDAH'),
+(73, 3, 'DOWNLOAD_XLS'),
+(74, 102, 'ADD_DATA'),
+(75, 102, 'PRINT_DATA'),
+(76, 102, 'REMOVE_DATA'),
+(77, 102, 'EDIT_DATA'),
+(78, 104, 'PRINT_DATA'),
+(79, 104, 'REMOVE_DATA'),
+(80, 104, 'EDIT_DATA'),
+(81, 104, 'ADD_DATA'),
+(82, 103, 'PRINT_DATA'),
+(83, 103, 'REMOVE_DATA'),
+(84, 103, 'EDIT_DATA'),
+(85, 103, 'ADD_DATA'),
+(87, 107, 'ADD_DATA'),
+(88, 107, 'EDIT_DATA'),
+(89, 107, 'REMOVE_DATA'),
+(90, 107, 'PRINT_DATA'),
+(91, 108, 'ADD_DATA'),
+(92, 108, 'EDIT_DATA'),
+(93, 108, 'REMOVE_DATA'),
+(94, 108, 'PRINT_DATA');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `role_menu_event_group`
+--
+
+CREATE TABLE IF NOT EXISTS `role_menu_event_group` (
+  `role_menu_event_id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_id` int(11) DEFAULT NULL,
+  `group_id` int(11) DEFAULT NULL,
+  `is_active` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`role_menu_event_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=580 ;
+
+--
+-- Dumping data untuk tabel `role_menu_event_group`
+--
+
+INSERT INTO `role_menu_event_group` (`role_menu_event_id`, `role_id`, `group_id`, `is_active`) VALUES
+(244, 47, 2, 1),
+(243, 47, 1, 1),
+(242, 46, 2, 1),
+(220, 14, 2, 0),
+(207, 32, 1, 1),
+(241, 46, 1, 1),
+(240, 45, 2, 0),
+(239, 45, 1, 1),
+(230, 40, 2, 1),
+(229, 40, 1, 1),
+(236, 43, 2, 1),
+(238, 44, 2, 1),
+(234, 42, 2, 1),
+(232, 41, 2, 1),
+(224, 35, 2, 1),
+(223, 34, 2, 1),
+(222, 33, 2, 1),
+(221, 32, 2, 1),
+(209, 34, 1, 1),
+(210, 35, 1, 1),
+(208, 33, 1, 1),
+(202, 14, 1, 0),
+(201, 13, 1, 0),
+(200, 12, 1, 0),
+(199, 11, 1, 0),
+(198, 10, 1, 0),
+(197, 9, 1, 0),
+(219, 13, 2, 0),
+(218, 12, 2, 0),
+(217, 11, 2, 0),
+(216, 10, 2, 0),
+(215, 9, 2, 0),
+(235, 43, 1, 1),
+(237, 44, 1, 1),
+(233, 42, 1, 1),
+(231, 41, 1, 1),
+(245, 48, 1, 1),
+(246, 48, 2, 1),
+(247, 49, 1, 1),
+(248, 49, 2, 0),
+(249, 50, 1, 1),
+(250, 50, 2, 1),
+(251, 51, 1, 1),
+(252, 51, 2, 1),
+(253, 52, 1, 1),
+(254, 52, 2, 1),
+(255, 53, 1, 1),
+(256, 53, 2, 1),
+(257, 54, 1, 1),
+(258, 54, 2, 0),
+(259, 55, 1, 1),
+(260, 55, 2, 1),
+(261, 56, 1, 1),
+(262, 56, 2, 1),
+(263, 57, 1, 1),
+(264, 57, 2, 1),
+(265, 58, 1, 1),
+(266, 58, 2, 0),
+(267, 59, 1, 1),
+(268, 59, 2, 1),
+(269, 60, 1, 1),
+(270, 60, 2, 0),
+(271, 61, 1, 1),
+(272, 61, 2, 1),
+(273, 62, 1, 1),
+(274, 62, 2, 1),
+(275, 63, 1, 1),
+(276, 63, 2, 1),
+(277, 64, 1, 1),
+(278, 64, 2, 0),
+(348, 64, 4, 1),
+(347, 63, 4, 0),
+(346, 62, 4, 0),
+(345, 61, 4, 0),
+(344, 60, 4, 1),
+(343, 59, 4, 0),
+(342, 58, 4, 1),
+(341, 57, 4, 0),
+(340, 56, 4, 0),
+(339, 55, 4, 0),
+(338, 54, 4, 1),
+(337, 53, 4, 0),
+(336, 52, 4, 0),
+(335, 51, 4, 0),
+(334, 50, 4, 0),
+(333, 49, 4, 1),
+(332, 48, 4, 0),
+(331, 47, 4, 0),
+(330, 46, 4, 0),
+(329, 45, 4, 0),
+(328, 44, 4, 0),
+(327, 43, 4, 0),
+(326, 42, 4, 0),
+(325, 41, 4, 0),
+(324, 40, 4, 0),
+(323, 35, 4, 0),
+(322, 34, 4, 0),
+(321, 33, 4, 0),
+(320, 32, 4, 0),
+(319, 14, 4, 0),
+(318, 13, 4, 0),
+(317, 12, 4, 0),
+(316, 11, 4, 0),
+(315, 10, 4, 0),
+(314, 9, 4, 0),
+(349, 9, 5, 0),
+(350, 10, 5, 0),
+(351, 11, 5, 0),
+(352, 12, 5, 0),
+(353, 13, 5, 0),
+(354, 14, 5, 0),
+(355, 32, 5, 0),
+(356, 33, 5, 0),
+(357, 34, 5, 0),
+(358, 35, 5, 0),
+(359, 40, 5, 0),
+(360, 41, 5, 0),
+(361, 42, 5, 0),
+(362, 43, 5, 0),
+(363, 44, 5, 0),
+(364, 45, 5, 0),
+(365, 46, 5, 0),
+(366, 47, 5, 0),
+(367, 48, 5, 0),
+(368, 49, 5, 0),
+(369, 50, 5, 0),
+(370, 51, 5, 0),
+(371, 52, 5, 0),
+(372, 53, 5, 0),
+(373, 54, 5, 0),
+(374, 55, 5, 0),
+(375, 56, 5, 0),
+(376, 57, 5, 0),
+(377, 58, 5, 0),
+(378, 59, 5, 0),
+(379, 60, 5, 0),
+(380, 61, 5, 0),
+(381, 62, 5, 0),
+(382, 63, 5, 0),
+(383, 64, 5, 0),
+(384, 65, 1, 1),
+(385, 65, 2, 1),
+(386, 65, 4, 0),
+(387, 65, 5, 0),
+(475, 69, 5, 0),
+(474, 69, 4, 1),
+(473, 69, 2, 0),
+(472, 69, 1, 1),
+(471, 68, 5, 0),
+(470, 68, 4, 0),
+(469, 68, 2, 1),
+(468, 68, 1, 1),
+(467, 67, 5, 0),
+(466, 67, 4, 0),
+(465, 67, 2, 1),
+(464, 67, 1, 1),
+(476, 70, 1, 1),
+(477, 70, 2, 0),
+(478, 70, 4, 1),
+(479, 70, 5, 0),
+(491, 73, 5, 0),
+(490, 73, 4, 0),
+(489, 73, 2, 1),
+(488, 73, 1, 1),
+(492, 74, 1, 1),
+(493, 74, 2, 0),
+(494, 74, 4, 0),
+(495, 74, 5, 0),
+(496, 75, 1, 1),
+(497, 76, 1, 1),
+(498, 77, 1, 1),
+(499, 75, 2, 0),
+(500, 76, 2, 0),
+(501, 77, 2, 0),
+(502, 75, 4, 0),
+(503, 76, 4, 0),
+(504, 77, 4, 0),
+(505, 75, 5, 0),
+(506, 76, 5, 0),
+(507, 77, 5, 0),
+(508, 78, 1, 1),
+(509, 79, 1, 1),
+(510, 80, 1, 1),
+(511, 81, 1, 1),
+(512, 78, 2, 0),
+(513, 79, 2, 0),
+(514, 80, 2, 0),
+(515, 81, 2, 0),
+(516, 78, 4, 0),
+(517, 79, 4, 0),
+(518, 80, 4, 0),
+(519, 81, 4, 0),
+(520, 78, 5, 0),
+(521, 79, 5, 0),
+(522, 80, 5, 0),
+(523, 81, 5, 0),
+(524, 82, 1, 1),
+(525, 83, 1, 1),
+(526, 84, 1, 1),
+(527, 85, 1, 1),
+(528, 82, 2, 0),
+(529, 83, 2, 0),
+(530, 84, 2, 0),
+(531, 85, 2, 0),
+(532, 82, 4, 1),
+(533, 83, 4, 0),
+(534, 84, 4, 0),
+(535, 85, 4, 0),
+(536, 82, 5, 0),
+(537, 83, 5, 0),
+(538, 84, 5, 0),
+(539, 85, 5, 0),
+(547, 87, 5, 0),
+(546, 87, 4, 0),
+(545, 87, 2, 0),
+(544, 87, 1, 1),
+(548, 88, 1, 1),
+(549, 88, 2, 0),
+(550, 88, 4, 0),
+(551, 88, 5, 0),
+(552, 89, 1, 1),
+(553, 89, 2, 0),
+(554, 89, 4, 0),
+(555, 89, 5, 0),
+(556, 90, 1, 1),
+(557, 90, 2, 0),
+(558, 90, 4, 0),
+(559, 90, 5, 0),
+(560, 91, 1, 1),
+(561, 91, 2, 0),
+(562, 91, 4, 0),
+(563, 91, 5, 0),
+(564, 92, 1, 1),
+(565, 92, 2, 0),
+(566, 92, 4, 0),
+(567, 92, 5, 0),
+(568, 93, 1, 1),
+(569, 93, 2, 0),
+(570, 93, 4, 0),
+(571, 93, 5, 0),
+(572, 94, 1, 1),
+(573, 94, 2, 0),
+(574, 94, 4, 0),
+(575, 94, 5, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `role_menu_group`
+--
+
+CREATE TABLE IF NOT EXISTS `role_menu_group` (
+  `role_menu_id` int(11) NOT NULL AUTO_INCREMENT,
+  `menu_id` int(11) DEFAULT NULL,
+  `group_id` int(11) DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`role_menu_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=565 ;
+
+--
+-- Dumping data untuk tabel `role_menu_group`
+--
+
+INSERT INTO `role_menu_group` (`role_menu_id`, `menu_id`, `group_id`, `is_active`) VALUES
+(443, 96, 2, 0),
+(426, 82, 4, 0),
+(442, 96, 1, 1),
+(387, 1, 2, 1),
+(441, 95, 4, 0),
+(383, 82, 1, 1),
+(440, 95, 2, 0),
+(382, 81, 1, 1),
+(439, 95, 1, 1),
+(438, 94, 4, 0),
+(437, 94, 2, 0),
+(436, 94, 1, 1),
+(435, 93, 4, 0),
+(434, 93, 2, 0),
+(433, 93, 1, 1),
+(432, 92, 4, 0),
+(425, 81, 4, 0),
+(381, 12, 1, 1),
+(431, 92, 2, 0),
+(424, 12, 4, 0),
+(380, 11, 1, 1),
+(430, 92, 1, 1),
+(450, 3, 5, 0),
+(449, 2, 5, 0),
+(448, 1, 5, 0),
+(423, 11, 4, 0),
+(422, 10, 4, 1),
+(421, 9, 4, 1),
+(420, 7, 4, 1),
+(419, 6, 4, 1),
+(418, 5, 4, 1),
+(417, 4, 4, 0),
+(416, 3, 4, 0),
+(415, 2, 4, 1),
+(379, 10, 1, 1),
+(378, 9, 1, 1),
+(377, 7, 1, 1),
+(376, 6, 1, 1),
+(375, 5, 1, 1),
+(374, 4, 1, 1),
+(373, 3, 1, 1),
+(372, 2, 1, 1),
+(371, 1, 1, 1),
+(414, 1, 4, 1),
+(399, 82, 2, 1),
+(398, 81, 2, 1),
+(397, 12, 2, 1),
+(396, 11, 2, 1),
+(395, 10, 2, 1),
+(394, 9, 2, 1),
+(393, 7, 2, 1),
+(392, 6, 2, 1),
+(391, 5, 2, 1),
+(390, 4, 2, 1),
+(389, 3, 2, 1),
+(388, 2, 2, 1),
+(444, 96, 4, 0),
+(445, 97, 1, 1),
+(446, 97, 2, 0),
+(447, 97, 4, 0),
+(451, 4, 5, 0),
+(452, 5, 5, 0),
+(453, 6, 5, 0),
+(454, 7, 5, 0),
+(455, 9, 5, 0),
+(456, 10, 5, 0),
+(457, 11, 5, 0),
+(458, 12, 5, 0),
+(459, 81, 5, 0),
+(460, 82, 5, 0),
+(461, 92, 5, 1),
+(462, 93, 5, 1),
+(463, 94, 5, 1),
+(464, 95, 5, 1),
+(465, 96, 5, 1),
+(466, 97, 5, 1),
+(508, 98, 5, 0),
+(507, 98, 4, 1),
+(506, 98, 2, 1),
+(505, 98, 1, 1),
+(524, 102, 5, 0),
+(523, 102, 4, 0),
+(522, 102, 2, 0),
+(521, 102, 1, 1),
+(520, 101, 5, 0),
+(519, 101, 4, 0),
+(518, 101, 2, 0),
+(517, 101, 1, 1),
+(525, 103, 1, 1),
+(526, 103, 2, 0),
+(527, 103, 4, 1),
+(528, 103, 5, 0),
+(529, 104, 1, 1),
+(530, 104, 2, 0),
+(531, 104, 4, 0),
+(532, 104, 5, 0),
+(540, 106, 5, 0),
+(539, 106, 4, 0),
+(538, 106, 2, 0),
+(537, 106, 1, 1),
+(541, 107, 1, 1),
+(542, 107, 2, 0),
+(543, 107, 4, 0),
+(544, 107, 5, 0),
+(545, 108, 1, 1),
+(546, 108, 2, 0),
+(547, 108, 4, 0),
+(548, 108, 5, 0),
+(564, 112, 5, 0),
+(563, 112, 4, 0),
+(562, 112, 2, 0),
+(561, 112, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tdatang`
+--
+
+CREATE TABLE IF NOT EXISTS `tdatang` (
+  `id_datang` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_penduduk` bigint(20) NOT NULL,
+  `tgl_datang` date NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `kelurahan` varchar(255) NOT NULL,
+  `kecamatan` varchar(255) NOT NULL,
+  `kabupaten` varchar(255) NOT NULL,
+  `propinsi` varchar(255) NOT NULL,
+  `alasan_datang` varchar(255) NOT NULL,
+  `group_datang` varchar(32) NOT NULL,
+  PRIMARY KEY (`id_datang`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data untuk tabel `tdatang`
+--
+
+INSERT INTO `tdatang` (`id_datang`, `id_penduduk`, `tgl_datang`, `alamat`, `kelurahan`, `kecamatan`, `kabupaten`, `propinsi`, `alasan_datang`, `group_datang`) VALUES
+(6, 337, '2010-03-31', 'Malang', 'Malang', 'Malang', 'malagn', 'jawa Tengah', 'Bekerja', '20100401191726'),
+(7, 338, '2010-03-31', 'Malang', 'Malang', 'Malang', 'malagn', 'jawa Tengah', 'Bekerja', '20100401191726'),
+(8, 343, '2010-04-01', 'jawa tengah', 'magelang', 'teuwr', 'me', 'malang', 'bdfd', '20100403081528');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tkelahiran`
+--
+
+CREATE TABLE IF NOT EXISTS `tkelahiran` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_penduduk` int(11) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `tempat_lahir` varchar(128) NOT NULL,
+  `berat_badan` float NOT NULL,
+  `keterangan` varchar(255) NOT NULL,
+  `id_ibu` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data untuk tabel `tkelahiran`
+--
+
+INSERT INTO `tkelahiran` (`id`, `id_penduduk`, `tanggal_lahir`, `tempat_lahir`, `berat_badan`, `keterangan`, `id_ibu`) VALUES
+(1, 328, '2010-03-13', 'Puskesmas Bakalan', 3, 'sehat', 30),
+(2, 334, '2010-02-07', 'Malang', 3, 'Sehat', 21),
+(3, 336, '2010-03-31', 'Malang', 3, 'bagus', 19);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tkematian`
+--
+
+CREATE TABLE IF NOT EXISTS `tkematian` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_penduduk` int(11) NOT NULL,
+  `tanggal_kematian` date NOT NULL,
+  `jam_kematian` time NOT NULL,
+  `tempat_makam` varchar(255) NOT NULL,
+  `keterangan` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data untuk tabel `tkematian`
+--
+
+INSERT INTO `tkematian` (`id`, `id_penduduk`, `tanggal_kematian`, `jam_kematian`, `tempat_makam`, `keterangan`) VALUES
+(1, 271, '2010-03-01', '01:00:00', 'tes', 'df'),
+(2, 248, '2010-03-12', '00:30:00', 'pasrah', 'tewur');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tpenduduk`
+--
+
+CREATE TABLE IF NOT EXISTS `tpenduduk` (
+  `id_penduduk` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(128) COLLATE latin1_general_ci NOT NULL,
+  `kelamin` varchar(15) COLLATE latin1_general_ci NOT NULL,
+  `tempat_lahir` varchar(64) COLLATE latin1_general_ci NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `status_kawin` varchar(32) COLLATE latin1_general_ci NOT NULL,
+  `agama` varchar(64) COLLATE latin1_general_ci NOT NULL,
+  `pendidikan` varchar(128) COLLATE latin1_general_ci NOT NULL,
+  `pekerjaan` varchar(128) COLLATE latin1_general_ci NOT NULL,
+  `baca_tulis` varchar(12) COLLATE latin1_general_ci NOT NULL,
+  `h_keluarga` varchar(32) COLLATE latin1_general_ci NOT NULL,
+  `anggota_dari` bigint(20) NOT NULL,
+  `rt` varchar(4) COLLATE latin1_general_ci NOT NULL,
+  `rw` varchar(4) COLLATE latin1_general_ci NOT NULL,
+  `dusun` varchar(64) COLLATE latin1_general_ci NOT NULL,
+  `no_ktp` varchar(64) COLLATE latin1_general_ci NOT NULL,
+  `no_kk` varchar(64) COLLATE latin1_general_ci NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1',
+  `picture` varchar(128) COLLATE latin1_general_ci NOT NULL DEFAULT 'no_image.jpg',
+  PRIMARY KEY (`id_penduduk`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=345 ;
+
+--
+-- Dumping data untuk tabel `tpenduduk`
+--
+
+INSERT INTO `tpenduduk` (`id_penduduk`, `nama`, `kelamin`, `tempat_lahir`, `tanggal_lahir`, `status_kawin`, `agama`, `pendidikan`, `pekerjaan`, `baca_tulis`, `h_keluarga`, `anggota_dari`, `rt`, `rw`, `dusun`, `no_ktp`, `no_kk`, `status`, `picture`) VALUES
+(1, 'PONEMAN', 'LAKI-LAKI', 'MALANG', '1960-01-01', 'Kawin', 'ISLAM', '-', 'Buruh Tani', 'Bisa', 'Kepala Keluarga', 0, '04', '01', 'BAKALAN 01', '1.02E+08', '3.51E+15', 1, 'PB110147.jpg'),
+(2, 'SITI ASIYAH', 'PEREMPUAN', 'MALANG', '1966-01-01', 'Kawin', 'ISLAM', '-', 'Mengurus Rumah Tangga', 'Bisa', 'Istri', 1, '4', '1', 'BAKALAN 01', '4.10E+09', '3.51E+15', 1, 'no_image.jpg'),
+(3, 'M MAHFUD', 'LAKI-LAKI', 'MALANG', '1984-05-01', 'Kawin', '-', 'SLTP', 'Karyawan Swasta', 'Bisa', 'Anak', 1, '4', '1', 'BAKALAN 01', '1.06E+08', '3.51E+15', 1, 'no_image.jpg'),
+(4, 'SITI CHOIRIYAH', 'PEREMPUAN', 'MALANG', '1985-04-06', 'Kawin', 'ISLAM', '-', 'Mengurus Rumah Tangga', 'Bisa', 'Anak', 1, '4', '1', 'BAKALAN 01', '4.60E+09', '3.51E+15', 1, 'no_image.jpg'),
+(5, 'M MUNIR', 'LAKI-LAKI', 'MALANG', '1990-01-01', 'Belum Kawin', 'ISLAM', 'SLTP', 'Karyawan Swasta', 'Bisa', 'Anak', 1, '4', '1', 'BAKALAN 01', '1.02E+08', '3.51E+15', 1, 'no_image.jpg'),
+(6, 'ANISATUL FARIDA', 'PEREMPUAN', 'MALANG', '1996-08-18', 'Belum Kawin', 'ISLAM', 'SLTP', 'Pelajar', 'Bisa', 'Anak', 1, '4', '1', 'BAKALAN 01', '5.81E+09', '3.51E+15', 1, 'no_image.jpg'),
+(7, 'SAFIATUL MARDIYAH', 'PEREMPUAN', 'MALANG', '1974-04-01', 'Kawin', 'ISLAM', '-', 'Mengurus Rumah Tangga', 'Bisa', 'Famili Lain', 1, '4', '1', 'BAKALAN 01', '4.10E+09', '3.51E+15', 1, 'no_image.jpg'),
+(8, 'CHOLIS MARDIYAH', 'PEREMPUAN', 'MALANG', '1978-03-20', 'Janda', 'ISLAM', 'SD', 'Karyawan Swasta', 'Bisa', 'Kepala Keluarga', 1, '4', '1', 'BAKALAN 01', '6.00E+09', '3.51E+15', 1, 'no_image.jpg'),
+(9, 'APRILIA FAHMI SAPUTRA', 'PEREMPUAN', 'MALANG', '1999-04-02', 'Belum Kawin', 'ISLAM', '-', 'Pelajar', 'Bisa', 'Anak', 1, '4', '1', 'BAKALAN 01', '4.20E+09', '3.51E+15', 1, 'no_image.jpg'),
+(10, 'MOCHAMMAD FIRMAN SAPUTRA', 'LAKI-LAKI', 'MALANG', '2005-03-14', 'Kawin', 'ISLAM', '-', 'Belum Bekerja', 'Bisa', 'Anak', 1, '4', '1', 'BAKALAN 01', '2.10E+09', '3.51E+15', 1, 'no_image.jpg'),
+(11, 'MOCHAMMAD FARIL KURNIAWAN', 'LAKI-LAKI', 'MALANG', '2007-01-10', 'Belum Kawin', 'ISLAM', '-', 'Belum Bekerja', 'Bisa', 'Anak', 1, '4', '1', 'BAKALAN 01', '1.00E+09', '3.51E+15', 1, 'no_image.jpg'),
+(12, 'SUHADAK', 'LAKI-LAKI', 'MALANG', '1975-07-18', 'Kawin', 'ISLAM', 'SD', 'Karyawan Swasta', 'Bisa', 'Kepala Keluarga', 0, '2', '1', 'BAKALAN 01', '1.81E+09', '211090005', 1, 'no_image.jpg'),
+(13, 'SURYANING MEGAWATI', 'PEREMPUAN', 'MALANG', '1977-03-16', 'Kawin', 'ISLAM', 'SD', 'Karyawan Swasta', 'Bisa', 'Istri', 12, '2', '1', 'BAKALAN 01', '5.60E+09', '211090005', 1, 'no_image.jpg'),
+(14, 'ITA LESTARI', 'PEREMPUAN', 'MALANG', '1997-02-04', 'Belum Kawin', 'ISLAM', 'SD', 'Pelajar', 'Bisa', 'Anak', 12, '2', '1', 'BAKALAN 01', '4.40E+09', '211090005', 1, 'no_image.jpg'),
+(15, 'MUHAMMAD WILDAN HAKIM', 'LAKI-LAKI', 'MALANG', '1999-11-30', 'Belum Kawin', 'ISLAM', '-', 'Pelajar', 'Bisa', 'Anak', 12, '2', '1', 'BAKALAN 01', '3.01E+09', '211090005', 1, 'no_image.jpg'),
+(16, 'MULYONO', 'LAKI-LAKI', 'MALANG', '1970-10-18', 'Kawin', 'ISLAM', 'SLTA', 'Petani', 'Bisa', 'Kepala Keluarga', 0, '3', '1', 'BAKALAN 01', '1.61E+09', '709040360', 1, 'no_image.jpg'),
+(17, 'NUR SOLIHATIN', 'PEREMPUAN', 'MALANG', '1979-08-05', 'Kawin', 'ISLAM', 'SLTP', 'Mengurus Rumah Tangga', 'Bisa', 'Istri', 16, '3', '1', 'BAKALAN 01', '4.50E+09', '709040360', 1, 'no_image.jpg'),
+(18, 'MAGFIROH MULYANING RIZQI', 'PEREMPUAN', 'MALANG', '2000-05-07', 'Belum Kawin', 'ISLAM', '-', 'Pelajar', 'Bisa', 'Anak', 16, '3', '1', 'BAKALAN 01', '4.71E+09', '709040360', 1, 'no_image.jpg'),
+(19, 'FISKA AFINDIA RIZKI', 'PEREMPUAN', 'MALANG', '2006-04-06', 'Belum Kawin', 'ISLAM', '-', 'Belum Bekerja', '', 'Anak', 16, '3', '1', 'BAKALAN 01', '4.00E+09', '709040360', 1, 'no_image.jpg'),
+(20, 'PUDJIADI', 'LAKI-LAKI', 'MALANG', '1948-11-07', 'Kawin', 'ISLAM', 'SLTA', 'Pensiunan', 'Bisa', 'Kepala Keluarga', 0, '3', '1', 'BAKALAN 01', '7.11E+08', '2005050021', 1, 'no_image.jpg'),
+(21, 'IDA NUR HARIATI', 'PEREMPUAN', 'MALANG', '1955-09-06', 'Kawin', 'ISLAM', 'SLTA', 'Wiraswasta', 'Bisa', 'Istri', 20, '3', '1', 'BAKALAN 01', '4.61E+09', '2005050021', 1, 'no_image.jpg'),
+(22, 'BAYU PUTRA PRATAMA', 'LAKI-LAKI', 'MALANG', '1983-05-17', 'Belum Kawin', 'ISLAM', 'S1', 'Wiraswasta', 'Bisa', 'Anak', 20, '3', '1', 'BAKALAN 01', '1.71E+09', '2005050021', 1, 'no_image.jpg'),
+(23, 'ABD WAHID', 'LAKI-LAKI', 'MALANG', '1970-03-20', 'Belum Kawin', 'ISLAM', 'SD', 'Wiraswasta', 'Bisa', 'Kepala Keluarga', 0, '1', '2', 'BAKALAN 01', '2.00E+09', '2206090006', 1, 'no_image.jpg'),
+(24, 'SUKIRNO', 'LAKI-LAKI', 'MALANG', '1960-08-01', 'Kawin', 'ISLAM', '-', 'Buruh Tani', 'TIDAK BISA', 'Kepala Keluarga', 0, '2', '7', 'BANJARSARI 01', '1.01E+09', '709040378', 1, 'no_image.jpg'),
+(25, 'SATIAH', 'PEREMPUAN', 'MALANG', '1959-11-02', 'Kawin', 'ISLAM', '-', 'Buruh Tani', 'TIDAK BISA', 'Istri', 24, '2', '7', 'BANJARSARI 01', '4.21E+09', '709040378', 1, 'no_image.jpg'),
+(26, 'SYAIFUL ANWAR', 'LAKI-LAKI', 'MALANG', '1992-01-23', 'Belum Kawin', 'ISLAM', 'SLTP', 'Karyawan Swasta', 'Bisa', 'Anak', 24, '2', '7', 'BANJARSARI 01', '2.30E+09', '709040378', 1, 'no_image.jpg'),
+(27, 'HIKMA UMAIDA', 'PEREMPUAN', 'MALANG', '1997-11-28', 'Belum Kawin', 'ISLAM', 'SLTP', 'Belum Bekerja', 'Bisa', 'Anak', 24, '2', '7', 'BANJARSARI 01', '6.61E+09', '709040378', 1, 'no_image.jpg'),
+(28, 'SUWITO', 'LAKI-LAKI', 'MALANG', '1960-02-04', 'Kawin', 'ISLAM', 'SD', 'Tukang jahit', 'Bisa', 'Kepala Keluarga', 0, '1', '8', 'BANJARSARI 01', '4.03E+08', '1908050011', 1, 'no_image.jpg'),
+(29, 'ROSITA', 'PEREMPUAN', 'MALANG', '1962-08-01', 'Kawin', 'ISLAM', 'SD', 'Mengurus Rumah Tangga', 'Bisa', 'Istri', 28, '1', '8', 'BANJARSARI 01', '4.11E+09', '1908050011', 1, 'no_image.jpg'),
+(30, 'ANILIS INDRAWATI', 'PEREMPUAN', 'MALANG', '1984-09-18', 'Kawin', 'ISLAM', 'SLTP', 'Mengurus Rumah Tangga', 'Bisa', 'Anak', 28, '1', '8', 'BANJARSARI 01', '5.81E+09', '1908050011', 1, 'revalina_s_temat_01.jpg'),
+(31, 'ALFAN JUNAIDI', 'LAKI-LAKI', 'MALANG', '1980-01-30', 'Kawin', 'ISLAM', 'SLTA', 'Karyawan Swasta', 'Bisa', 'Menantu', 28, '1', '8', 'BANJARSARI 01', '3.00E+09', '1908050011', 1, 'no_image.jpg'),
+(32, 'ALMAK MALIK ABDU', 'LAKI-LAKI', 'MALANG', '2006-05-13', 'Belum Kawin', 'ISLAM', '-', 'Tidak Bekerja', 'Bisa', 'Cucu', 28, '1', '8', 'BANJARSARI 01', '1.31E+09', '1908050011', 1, 'no_image.jpg'),
+(33, 'KATUMI', 'PEREMPUAN', 'MALANG', '1930-02-04', 'Janda', 'ISLAM', '-', 'Buruh Tani', 'TIDAK BISA', 'Mertua', 28, '1', '8', 'BANJARSARI 01', '4.40E+09', '1908050011', 1, 'no_image.jpg'),
+(34, 'MISERI', 'LAKI-LAKI', 'MALANG', '1958-11-21', 'Kawin', 'ISLAM', 'SD', 'Karyawan Swasta', 'Bisa', 'Kepala Keluarga', 0, '3', '1', 'BAKALAN 01', '2.11E+09', '2608040038', 1, 'no_image.jpg'),
+(35, 'SULIANI', 'PEREMPUAN', '', '1965-06-03', 'Kawin', 'ISLAM', 'SD', 'Mengurus Rumah Tangga', 'Bisa', 'Istri', 34, '3', '1', 'BAKALAN 01', '342', '2608040038', 1, 'no_image.jpg'),
+(36, 'SUNARIYANTI', 'PEREMPUAN', '', '1991-10-27', 'Belum Kawin', 'ISLAM', 'SLTP', 'Karyawan Swasta', 'Bisa', 'Anak', 34, '3', '1', 'BAKALAN 01', '75456', '2608040038', 1, 'no_image.jpg'),
+(37, 'JOKO SAMPURNO', 'LAKI-LAKI', '', '1995-12-04', 'Belum Kawin', 'ISLAM', 'SLTP', 'Pelajar', 'Bisa', 'Anak', 34, '3', '1', 'BAKALAN 01', '2342', '2608040038', 1, 'no_image.jpg'),
+(38, 'MISTAR', 'LAKI-LAKI', '', '2945-03-12', '', '-', 'SLTP', 'Petani', '', 'Kepala Keluarga', 0, '4', '1', 'BAKALAN 01', '959', '709040403', 1, 'no_image.jpg'),
+(39, 'KHATINI', 'PEREMPUAN', '', '1950-08-10', '', '-', 'SD', 'Pedagang', '', 'Istri', 38, '4', '1', 'BAKALAN 01', '23423', '709040403', 1, 'no_image.jpg'),
+(40, 'HARI KARIADI', 'LAKI-LAKI', '', '1982-04-26', '', '-', 'SLTP', 'Karyawan Swasta', '', 'Anak', 38, '4', '1', 'BAKALAN 01', '43534', '709040403', 1, 'no_image.jpg'),
+(41, 'SITI MAIMUNAH', 'PEREMPUAN', '', '1986-07-06', '', '-', 'SLTP', 'Karyawan Swasta', '', 'Menantu', 38, '4', '1', 'BAKALAN 01', '343464', '709040403', 1, 'no_image.jpg'),
+(42, 'ACHMAD SURIYADI', 'LAKI-LAKI', 'Malang', '1985-10-08', 'Kawin', '-', '-', 'Belum Bekerja', '', 'Cucu', 38, '4', '1', 'BAKALAN 01', '346343', '709040403', 1, 'no_image.jpg'),
+(43, 'M SHOLIP', 'LAKI-LAKI', '', '1965-01-09', 'Kawin', 'ISLAM', 'SLTP', 'Petani', '', 'Kepala Keluarga', 0, '2', '3', 'BAKALAN 01', '64564', '710090001', 1, 'no_image.jpg'),
+(44, 'SUPRAPTININGSIH', 'PEREMPUAN', '', '1982-09-12', 'Kawin', 'ISLAM', 'SLTP', 'Petani', '', 'Istri', 43, '2', '3', 'BAKALAN 01', '464567', '710090001', 1, 'no_image.jpg'),
+(45, 'RIKA INDRIANI', 'PEREMPUAN', '', '2000-03-16', 'Belum Kawin', 'ISLAM', '-', 'Pelajar', '', 'Anak', 43, '2', '3', 'BAKALAN 01', '4637463', '710090001', 1, 'no_image.jpg'),
+(46, 'RAHMA NOVIANI', 'PEREMPUAN', '', '2002-11-24', 'Belum Kawin', 'ISLAM', '-', 'Pelajar', '', 'Anak', 43, '2', '3', 'BAKALAN 01', '3645345', '710090001', 1, 'no_image.jpg'),
+(47, 'MISDI', 'LAKI-LAKI', '', '1953-06-01', 'Kawin', '-', 'SD', 'Petani', '', 'Kepala Keluarga', 0, '3', '1', 'BAKALAN 01', '34557464', '709040363', 1, 'no_image.jpg'),
+(48, 'TARMI', 'PEREMPUAN', '', '1954-08-07', 'Kawin', '-', 'SD', 'Mengurus Rumah Tangga', '', 'Istri', 47, '3', '1', 'BAKALAN 01', '345343', '709040363', 1, 'no_image.jpg'),
+(49, 'SURYANINGSIH', 'PEREMPUAN', '', '1994-02-28', 'Belum Kawin', '-', 'SLTP', 'Pelajar', '', 'Anak', 47, '3', '1', 'BAKALAN 01', '345345', '709040363', 1, 'no_image.jpg'),
+(50, 'SUGENG WAHYUDI', 'LAKI-LAKI', '', '1999-03-23', 'Belum Kawin', '-', '-', 'Pelajar', '', 'Anak', 47, '3', '1', 'BAKALAN 01', '4564', '709040363', 1, 'no_image.jpg'),
+(51, 'SUTRISNO', 'LAKI-LAKI', '', '1985-11-24', 'Kawin', '-', 'SD', 'Buruh Harian Lepas', '', 'Kepala Keluarga', 0, '3', '1', 'BAKALAN 01', '7456', '1008090003', 1, 'no_image.jpg'),
+(52, 'NIKMATUS SHOLIHA', 'PEREMPUAN', '', '1986-12-31', 'Kawin', '-', 'SLTA', 'Mengurus Rumah Tangga', '', 'Istri', 51, '3', '1', 'BAKALAN 01', '456', '1008090003', 1, 'no_image.jpg'),
+(53, 'RIZKA MAFIZA', 'PEREMPUAN', '', '2007-06-15', 'Belum Kawin', '-', '-', 'Belum Bekerja', '', 'Anak', 51, '3', '1', 'BAKALAN 01', '456', '1008090003', 1, 'no_image.jpg'),
+(54, 'SAJI', 'LAKI-LAKI', 'MALANG', '1965-08-08', 'Kawin', 'ISLAM', '-', 'Petani', 'TIDAK BISA', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '1', '1000000000', 1, 'no_image.jpg'),
+(55, 'SUGINI', 'PEREMPUAN', 'MALANG', '1965-10-01', 'Kawin', 'ISLAM', '-', 'Petani', 'TIDAK BISA', 'Istri', 54, '1', '1', 'BAKALAN 01', '2', '1000000000', 1, 'no_image.jpg'),
+(56, 'MUALIFA', 'PEREMPUAN', 'MALANG', '1987-05-11', 'Kawin', 'ISLAM', 'SLTP', 'Mengurus Rumah Tangga', 'Bisa', 'Anak', 54, '1', '1', 'BAKALAN 01', '3', '1000000000', 1, 'no_image.jpg'),
+(57, 'SAMAD', 'LAKI-LAKI', 'MALANG', '1957-08-01', 'Kawin', 'ISLAM', 'SD', 'Petani', 'Bisa', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '4', '2', 1, 'no_image.jpg'),
+(58, 'MISRI', 'PEREMPUAN', 'MALANG', '1958-09-10', 'Kawin', 'ISLAM', 'SD', 'Mengurus Rumah Tangga', 'Bisa', 'Istri', 57, '1', '1', 'BAKALAN 01', '5', '2', 1, 'no_image.jpg'),
+(59, 'CHOIRUL', 'LAKI-LAKI', 'MALANG', '1982-08-19', 'Kawin', 'ISLAM', 'SLTP', 'Petani', 'Bisa', 'Anak', 57, '1', '1', 'BAKALAN 01', '6', '2', 1, 'no_image.jpg'),
+(60, 'RIKA ANGGRAINI', 'PEREMPUAN', 'MALANG', '1991-11-24', 'Belum Kawin', 'ISLAM', 'SLTA', 'Pelajar', 'Bisa', 'Anak', 57, '1', '1', 'BAKALAN 01', '7', '2', 1, 'no_image.jpg'),
+(61, 'DASIYEM', 'PEREMPUAN', 'MALANG', '0000-00-00', 'Janda', 'ISLAM', 'SD', 'Petani', 'TIDAK BISA', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '8', '3', 1, 'no_image.jpg'),
+(62, 'SUHERIANTO', 'LAKI-LAKI', 'MALANG', '0000-00-00', 'Kawin', 'ISLAM', 'SLTA', 'Karyawan Swasta', 'Bisa', 'Anak', 61, '1', '1', 'BAKALAN 01', '9', '3', 1, 'no_image.jpg'),
+(63, 'YANI', 'PEREMPUAN', 'MALANG', '0000-00-00', 'Kawin', 'ISLAM', 'SLTA', 'Mengurus Rumah Tangga', 'Bisa', 'Menantu', 61, '1', '1', 'BAKALAN 01', '10', '3', 1, 'no_image.jpg'),
+(64, 'EKA', 'LAKI-LAKI', 'MALANG', '0000-00-00', 'Belum Kawin', 'ISLAM', '-', 'Tidak Bekerja', 'TIDAK BISA', 'Cucu', 61, '1', '1', 'BAKALAN 01', '11', '3', 1, 'no_image.jpg'),
+(65, 'DWI IMRON SANTOSO', 'LAKI-LAKI', '', '1969-01-01', 'Kawin', 'ISLAM', 'SLTA', 'Karyawan Swasta', 'Bisa', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '12', '4', 1, 'no_image.jpg'),
+(66, 'TUTIK CONDRO WATI', 'PEREMPUAN', '', '1973-04-10', 'Kawin', 'ISLAM', 'SLTP', 'Mengurus Rumah Tangga', 'Bisa', 'Istri', 65, '1', '1', 'BAKALAN 01', '13', '4', 1, 'no_image.jpg'),
+(67, 'RENALDI AS', 'LAKI-LAKI', '', '0000-00-00', 'Belum Kawin', 'ISLAM', 'SD', 'Pelajar', 'Bisa', 'Anak', 65, '1', '1', 'BAKALAN 01', '14', '4', 1, 'no_image.jpg'),
+(68, 'HELDI JAYA SANTOSO', 'PEREMPUAN', '', '2002-05-25', 'Belum Kawin', 'ISLAM', 'SD', 'Pelajar', 'TIDAK BISA', 'Anak', 65, '1', '1', 'BAKALAN 01', '15', '4', 1, 'no_image.jpg'),
+(69, 'FITRIA', 'PEREMPUAN', '', '1900-02-28', 'Belum Kawin', 'ISLAM', '-', 'Tidak Bekerja', 'TIDAK BISA', 'Anak', 65, '1', '1', 'BAKALAN 01', '16', '4', 1, 'no_image.jpg'),
+(70, 'TURAH', 'PEREMPUAN', '', '1956-08-01', 'Janda', 'ISLAM', 'SD', 'Petani', 'Bisa', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '17', '5', 1, 'no_image.jpg'),
+(71, 'ANSORI', 'LAKI-LAKI', '', '1979-09-01', 'Kawin', 'ISLAM', 'SLTA', 'Karyawan Swasta', 'Bisa', 'Anak', 70, '1', '1', 'BAKALAN 01', '18', '5', 1, 'no_image.jpg'),
+(72, 'MISERI', '', '', '1980-05-22', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '19', '6', 1, 'no_image.jpg'),
+(73, 'TITIK ISTILAH', '', '', '1976-02-18', '', 'ISLAM', '-', '', '', 'Istri', 72, '1', '1', 'BAKALAN 01', '20', '6', 1, 'no_image.jpg'),
+(74, 'ANGGI DIAN ARISTA', '', '', '2003-08-21', '', 'ISLAM', '-', '', '', 'Anak', 72, '1', '1', 'BAKALAN 01', '21', '6', 1, 'cecilia12.jpg'),
+(75, 'EDY TANTO', '', '', '1967-03-01', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '22', '7', 1, 'no_image.jpg'),
+(76, 'SITI KHOIDAROH', '', '', '1978-04-20', '', 'ISLAM', '-', '', '', 'Istri', 75, '1', '1', 'BAKALAN 01', '23', '7', 1, 'no_image.jpg'),
+(77, 'AHMAD FAISAL AM', '', '', '1998-01-12', '', 'ISLAM', '-', '', '', 'Anak', 75, '1', '1', 'BAKALAN 01', '24', '7', 1, 'no_image.jpg'),
+(78, 'RIZKI DWI ANDIKA', '', '', '2004-02-07', '', 'ISLAM', '-', '', '', 'Anak', 75, '1', '1', 'BAKALAN 01', '25', '7', 1, 'no_image.jpg'),
+(79, 'SUNARI', '', '', '1973-03-07', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '26', '8', 1, 'no_image.jpg'),
+(80, 'TITIK ALAMSYAH', '', '', '1977-02-18', '', 'ISLAM', '-', '', '', 'Istri', 79, '1', '1', 'BAKALAN 01', '27', '8', 1, 'no_image.jpg'),
+(81, 'RENDI ARDIANSYAH', '', '', '2001-08-24', '', 'ISLAM', '-', '', '', 'Anak', 79, '1', '1', 'BAKALAN 01', '28', '8', 1, 'no_image.jpg'),
+(82, 'ABD KHOLIK', 'LAKI-LAKI', 'Malang', '1959-08-01', 'Belum Kawin', 'ISLAM', '-', '', 'Bisa', 'Kepala Keluarga', 0, '01', '01', 'BAKALAN 01', '29', '9', 1, '240294248l_1.jpg'),
+(83, 'SUHARTINI', '', '', '1963-08-01', '', 'ISLAM', '-', '', '', 'Istri', 82, '1', '1', 'BAKALAN 01', '30', '9', 1, 'no_image.jpg'),
+(84, 'SURYA DEWI', '', '', '1992-09-26', '', 'ISLAM', '-', '', '', 'Anak', 82, '1', '1', 'BAKALAN 01', '31', '9', 1, 'no_image.jpg'),
+(85, 'MULYADI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '32', '10', 1, 'no_image.jpg'),
+(86, 'SRI INDAYATI', '', '', '1983-03-15', '', 'ISLAM', '-', '', '', 'Istri', 85, '1', '1', 'BAKALAN 01', '33', '10', 1, 'no_image.jpg'),
+(87, 'KHOIR', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 85, '1', '1', 'BAKALAN 01', '34', '10', 1, 'no_image.jpg'),
+(88, 'BUDIONO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '35', '11', 1, 'no_image.jpg'),
+(89, 'ARIF', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 88, '1', '1', 'BAKALAN 01', '36', '11', 1, 'no_image.jpg'),
+(90, 'LUTFI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 88, '1', '1', 'BAKALAN 01', '37', '11', 1, 'no_image.jpg'),
+(91, 'HAMID', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 88, '1', '1', 'BAKALAN 01', '38', '11', 1, 'no_image.jpg'),
+(92, 'JAMHURI', '', '', '1976-02-06', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '39', '12', 1, 'no_image.jpg'),
+(93, 'ANDRIANA', '', '', '1985-08-21', '', 'ISLAM', '-', '', '', 'Istri', 92, '1', '1', 'BAKALAN 01', '40', '12', 1, '404cecilia_cheung.jpg'),
+(94, 'RINA NADIYAH', '', '', '2003-03-10', '', 'ISLAM', '-', '', '', 'Anak', 92, '1', '1', 'BAKALAN 01', '41', '12', 1, 'no_image.jpg'),
+(95, 'RIZA CHUMARROH', '', '', '2003-03-10', '', 'ISLAM', '-', '', '', 'Anak', 92, '1', '1', 'BAKALAN 01', '42', '12', 1, 'no_image.jpg'),
+(96, 'SUGIANTO', '', '', '1958-01-01', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '43', '13', 1, 'no_image.jpg'),
+(97, 'SUPRIATIN', '', '', '1965-08-04', '', 'ISLAM', '-', '', '', 'Istri', 96, '1', '1', 'BAKALAN 01', '44', '13', 1, 'no_image.jpg'),
+(98, 'ZAINUL ROMADHONI', '', '', '1982-06-29', '', 'ISLAM', '-', '', '', 'Anak', 96, '1', '1', 'BAKALAN 01', '45', '13', 1, 'no_image.jpg'),
+(99, 'FITRI MUFIDAH', '', '', '1989-06-08', '', 'ISLAM', '-', '', '', 'Anak', 96, '1', '1', 'BAKALAN 01', '46', '13', 1, 'no_image.jpg'),
+(100, 'NASIRUDIN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Menantu', 96, '1', '1', 'BAKALAN 01', '47', '13', 1, 'no_image.jpg'),
+(101, 'PUTRI HASYA RAMADHANI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Cucu', 96, '1', '1', 'BAKALAN 01', '48', '13', 1, 'no_image.jpg'),
+(102, 'SUKEMI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '49', '14', 1, 'no_image.jpg'),
+(103, 'EKO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 102, '1', '1', 'BAKALAN 01', '50', '14', 1, 'no_image.jpg'),
+(104, 'AFANDI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 102, '1', '1', 'BAKALAN 01', '51', '14', 1, 'no_image.jpg'),
+(105, 'RIADI CONO', '', '', '1967-08-11', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '52', '15', 1, 'no_image.jpg'),
+(106, 'SUGIANTI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 105, '1', '1', 'BAKALAN 01', '53', '15', 1, 'no_image.jpg'),
+(107, 'RIAN DIDIT FERDIANTO', '', '', '1991-11-01', '', 'ISLAM', '-', '', '', 'Anak', 105, '1', '1', 'BAKALAN 01', '54', '15', 1, 'no_image.jpg'),
+(108, 'RIKI LEGA ANGGARA', '', '', '1996-09-11', '', 'ISLAM', '-', '', '', 'Anak', 105, '1', '1', 'BAKALAN 01', '55', '15', 1, 'no_image.jpg'),
+(109, 'RANGGA ERLANGGA', '', '', '2002-02-20', '', 'ISLAM', '-', '', '', 'Anak', 105, '1', '1', 'BAKALAN 01', '56', '15', 1, 'no_image.jpg'),
+(110, 'bojone cimot', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Menantu', 0, '1', '1', 'BAKALAN 01', '57', '', 1, 'no_image.jpg'),
+(111, 'AHMAD BASORI', '', '', '1966-08-25', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '58', '16', 1, 'no_image.jpg'),
+(112, 'WIWIN KHOTIMAH', '', '', '1973-08-13', '', 'ISLAM', '-', '', '', 'Istri', 111, '1', '1', 'BAKALAN 01', '59', '16', 1, 'no_image.jpg'),
+(113, 'ILHAM WAHYUDIN', '', '', '1994-07-24', '', 'ISLAM', '-', '', '', 'Anak', 111, '1', '1', 'BAKALAN 01', '60', '16', 1, 'no_image.jpg'),
+(114, 'SITI MARIYAM', '', '', '1952-03-08', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '61', '17', 1, 'no_image.jpg'),
+(115, 'ABD HARIS', '', '', '1969-06-25', '', 'ISLAM', '-', '', '', 'Anak', 114, '1', '1', 'BAKALAN 01', '62', '17', 1, '226510857l.jpg'),
+(116, 'BISRI', '', '', '1958-05-07', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '63', '18', 1, 'no_image.jpg'),
+(117, 'SUMAMI', '', '', '1962-08-01', '', 'ISLAM', '-', '', '', 'Istri', 116, '1', '1', 'BAKALAN 01', '64', '18', 1, 'no_image.jpg'),
+(118, 'IRFAN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 116, '1', '1', 'BAKALAN 01', '65', '18', 1, 'no_image.jpg'),
+(119, 'BOJONE', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Menantu', 116, '1', '1', 'BAKALAN 01', '66', '18', 1, 'no_image.jpg'),
+(120, 'KACUNG', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Menantu', 0, '1', '1', 'BAKALAN 01', '67', '19', 1, 'no_image.jpg'),
+(121, 'TINIK ALMAIDAH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 0, '1', '1', 'BAKALAN 01', '68', '19', 1, 'no_image.jpg'),
+(122, 'RIZKI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Cucu', 0, '1', '1', 'BAKALAN 01', '69', '19', 1, 'no_image.jpg'),
+(123, 'ADEKNE RIZKI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Cucu', 0, '1', '1', 'BAKALAN 01', '70', '19', 1, 'no_image.jpg'),
+(124, 'SIATIN', '', '', '1946-09-16', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '71', '20', 1, 'no_image.jpg'),
+(125, 'SUMARIYAH', '', '', '1964-08-10', '', 'ISLAM', '-', '', '', 'Istri', 124, '1', '1', 'BAKALAN 01', '72', '20', 1, 'no_image.jpg'),
+(126, 'M SAMSUL', '', '', '2000-12-25', '', 'ISLAM', '-', '', '', 'Anak', 124, '1', '1', 'BAKALAN 01', '73', '20', 1, 'no_image.jpg'),
+(127, 'SANADI', '', '', '1954-07-12', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '74', '21', 1, 'no_image.jpg'),
+(128, 'MISRI''A', '', '', '1962-08-10', '', 'ISLAM', '-', '', '', 'Istri', 127, '1', '1', 'BAKALAN 01', '75', '21', 1, 'no_image.jpg'),
+(129, 'M. ADI CANDRA', '', '', '1988-05-13', '', 'ISLAM', '-', '', '', 'Anak', 127, '1', '1', 'BAKALAN 01', '76', '21', 1, 'no_image.jpg'),
+(130, 'SATEMI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '77', '22', 1, 'no_image.jpg'),
+(131, 'BOJONE ANTI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Menantu', 130, '1', '1', 'BAKALAN 01', '78', '22', 1, 'no_image.jpg'),
+(132, 'ARIYANTI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 130, '1', '1', 'BAKALAN 01', '79', '22', 1, 'no_image.jpg'),
+(133, 'SATURI', '', '', '1962-09-29', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '80', '23', 1, 'no_image.jpg'),
+(134, 'SUNARMI', '', '', '1963-01-01', '', 'ISLAM', '-', '', '', 'Istri', 133, '1', '1', 'BAKALAN 01', '81', '23', 1, 'no_image.jpg'),
+(135, 'SITI JANATUL MAKWA', '', '', '1986-10-03', '', 'ISLAM', '-', '', '', 'Anak', 133, '1', '1', 'BAKALAN 01', '82', '23', 1, 'no_image.jpg'),
+(136, 'GUS BAHAR', '', '', '1991-09-06', '', 'ISLAM', '-', '', '', 'Anak', 133, '1', '1', 'BAKALAN 01', '83', '23', 1, 'no_image.jpg'),
+(137, 'ADELAN', '', '', '1976-06-21', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '84', '24', 1, 'no_image.jpg'),
+(138, 'NOVI ANITA', '', '', '1981-06-04', '', 'ISLAM', '-', '', '', 'Istri', 137, '1', '1', 'BAKALAN 01', '85', '24', 1, 'no_image.jpg'),
+(139, 'ROSI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 137, '1', '1', 'BAKALAN 01', '86', '24', 1, 'no_image.jpg'),
+(140, 'BUARI', '', '', '1951-08-01', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '87', '25', 1, 'no_image.jpg'),
+(141, 'SULASTRI ASIH', '', '', '1958-01-01', '', 'ISLAM', '-', '', '', 'Istri', 140, '1', '1', 'BAKALAN 01', '88', '25', 1, 'no_image.jpg'),
+(142, 'MUKHLIS', '', '', '1970-05-03', '', 'ISLAM', '-', '', '', 'Menantu', 140, '1', '1', 'BAKALAN 01', '89', '25', 1, 'no_image.jpg'),
+(143, 'ZULAIKAH', '', '', '1977-09-11', '', 'ISLAM', '-', '', '', 'Anak', 140, '1', '1', 'BAKALAN 01', '90', '25', 1, 'no_image.jpg'),
+(144, 'M.TAUFIQ GYMNASTIAR', '', '', '2002-07-01', '', 'ISLAM', '-', '', '', 'Cucu', 140, '1', '1', 'BAKALAN 01', '91', '25', 1, 'no_image.jpg'),
+(145, 'ASKURI', '', '', '1951-11-07', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '92', '26', 1, 'no_image.jpg'),
+(146, 'YULI SUMARTINI', '', '', '1962-07-25', '', 'ISLAM', '-', '', '', 'Istri', 145, '1', '1', 'BAKALAN 01', '93', '26', 1, 'no_image.jpg'),
+(147, 'YENI KURNIA WATI', '', '', '1982-06-10', '', 'ISLAM', '-', '', '', 'Anak', 145, '1', '1', 'BAKALAN 01', '94', '26', 1, 'no_image.jpg'),
+(148, 'FAJAR KURNIAWAN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 145, '1', '1', 'BAKALAN 01', '95', '26', 1, 'no_image.jpg'),
+(149, 'ANNISA KURNIA ASRI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 145, '1', '1', 'BAKALAN 01', '96', '26', 1, 'no_image.jpg'),
+(150, 'FIRDAUS KURNIA ARDHI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 145, '1', '1', 'BAKALAN 01', '97', '26', 1, 'no_image.jpg'),
+(151, 'SATUKAN / JOKO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '98', '27', 1, 'no_image.jpg'),
+(152, 'SULIHA', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 151, '1', '1', 'BAKALAN 01', '99', '27', 1, 'no_image.jpg'),
+(153, 'ANAKE SULIHA', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 151, '1', '1', 'BAKALAN 01', '100', '27', 1, 'no_image.jpg'),
+(154, 'LAMINA', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Mertua', 151, '1', '1', 'BAKALAN 01', '101', '27', 1, 'no_image.jpg'),
+(155, 'WINOTO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '102', '28', 1, 'no_image.jpg'),
+(156, 'SITI MUNTAMAH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 155, '1', '1', 'BAKALAN 01', '103', '28', 1, 'no_image.jpg'),
+(157, 'RIA KISWANDINI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 155, '1', '1', 'BAKALAN 01', '104', '28', 1, 'no_image.jpg'),
+(158, 'FUAD ZULKARNAIN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 155, '1', '1', 'BAKALAN 01', '105', '28', 1, 'no_image.jpg'),
+(159, 'M.SUBANGKIT PRAWITO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 155, '1', '1', 'BAKALAN 01', '106', '28', 1, 'no_image.jpg'),
+(160, 'NURIASIH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Famili Lain', 155, '1', '1', 'BAKALAN 01', '107', '28', 1, 'no_image.jpg'),
+(161, 'M.SULKHAN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '108', '29', 1, 'no_image.jpg'),
+(162, 'IIN ENDANG BUDIANTI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 161, '1', '1', 'BAKALAN 01', '109', '29', 1, 'no_image.jpg'),
+(163, 'FAHMI ERWINSYAH RIZKI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 161, '1', '1', 'BAKALAN 01', '110', '29', 1, 'no_image.jpg'),
+(164, 'SANIA AIR AULIA', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 161, '1', '1', 'BAKALAN 01', '111', '29', 1, 'no_image.jpg'),
+(165, 'SATUNI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Orang tua', 0, '1', '1', 'BAKALAN 01', '112', '30', 1, 'no_image.jpg'),
+(166, 'MISTO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '113', '31', 1, 'no_image.jpg'),
+(167, 'MISRIA', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 166, '1', '1', 'BAKALAN 01', '114', '31', 1, 'no_image.jpg'),
+(168, 'HERY DIAN KUSWANTO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '115', '32', 1, 'no_image.jpg'),
+(169, 'GIGIK NURHAYATI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 168, '1', '1', 'BAKALAN 01', '116', '32', 1, 'no_image.jpg'),
+(170, 'GILANG HERGI RAMANA', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 168, '1', '1', 'BAKALAN 01', '117', '32', 1, 'no_image.jpg'),
+(171, 'YATEMIN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '118', '33', 1, 'no_image.jpg'),
+(172, 'SUPIATI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 171, '1', '1', 'BAKALAN 01', '119', '33', 1, 'no_image.jpg'),
+(173, 'ISWANTO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 171, '1', '1', 'BAKALAN 01', '120', '33', 1, 'no_image.jpg'),
+(174, 'RIANTO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '121', '34', 1, 'no_image.jpg'),
+(175, 'WARTIAH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 174, '1', '1', 'BAKALAN 01', '122', '34', 1, 'no_image.jpg'),
+(176, 'AGUNG FITRIONO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 174, '1', '1', 'BAKALAN 01', '123', '34', 1, 'no_image.jpg'),
+(177, 'AFIFATUR RODIYAH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 174, '1', '1', 'BAKALAN 01', '124', '34', 1, 'no_image.jpg'),
+(178, 'QUROTUL AINI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '125', '35', 1, 'no_image.jpg'),
+(179, 'HIDAYATUL WAHIDH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 178, '1', '1', 'BAKALAN 01', '126', '35', 1, 'no_image.jpg'),
+(180, 'HERI PURNAMA', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '127', '36', 1, 'no_image.jpg'),
+(181, 'ENDANG', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 180, '1', '1', 'BAKALAN 01', '128', '36', 1, 'no_image.jpg'),
+(182, 'ANAKE ENDANG', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 180, '1', '1', 'BAKALAN 01', '129', '36', 1, 'no_image.jpg'),
+(183, 'BUDI JOYO SLAMET', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '130', '37', 1, 'no_image.jpg'),
+(184, 'TRI WAHYUNINGSIH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 183, '1', '1', 'BAKALAN 01', '131', '37', 1, 'no_image.jpg'),
+(185, 'M.BAHTIAR WAHYUDI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 183, '1', '1', 'BAKALAN 01', '132', '37', 1, 'no_image.jpg'),
+(186, 'IMAM SYAFII', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '133', '38', 1, 'no_image.jpg'),
+(187, 'SITI MUNAWAROH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 186, '1', '1', 'BAKALAN 01', '134', '38', 1, 'no_image.jpg'),
+(188, 'DEDIK YOYOK ARDIANTO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 186, '1', '1', 'BAKALAN 01', '135', '38', 1, 'no_image.jpg'),
+(189, 'BOJONE YOYOK', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Menantu', 186, '1', '1', 'BAKALAN 01', '136', '38', 1, 'no_image.jpg'),
+(190, 'ANAKE YOYOK', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Cucu', 186, '1', '1', 'BAKALAN 01', '137', '38', 1, 'cecilia16.jpg'),
+(191, 'MISRA''I', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '138', '39', 1, 'no_image.jpg'),
+(192, 'JUWARIYAH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 191, '1', '1', 'BAKALAN 01', '139', '39', 1, 'no_image.jpg'),
+(193, 'ULUM', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 191, '1', '1', 'BAKALAN 01', '140', '39', 1, 'no_image.jpg'),
+(194, 'BOJONE', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Menantu', 191, '1', '1', 'BAKALAN 01', '141', '39', 1, 'no_image.jpg'),
+(195, 'TARNO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '142', '40', 1, 'no_image.jpg'),
+(196, 'SULIANI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 195, '1', '1', 'BAKALAN 01', '143', '40', 1, 'no_image.jpg'),
+(197, 'ALIF', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 195, '1', '1', 'BAKALAN 01', '144', '40', 3, 'no_image.jpg'),
+(198, 'ADIKNE ALIF', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 195, '1', '1', 'BAKALAN 01', '145', '40', 1, 'no_image.jpg'),
+(199, 'JAERI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '146', '41', 1, 'no_image.jpg'),
+(200, 'ZAINURI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 199, '1', '1', 'BAKALAN 01', '147', '41', 1, 'no_image.jpg'),
+(201, 'SATIRUN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '148', '42', 1, 'no_image.jpg'),
+(202, 'SUMAIYAH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 201, '1', '1', 'BAKALAN 01', '149', '42', 1, 'no_image.jpg'),
+(203, 'M.BAGUS ARIFIH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Cucu', 201, '1', '1', 'BAKALAN 01', '150', '42', 1, 'no_image.jpg'),
+(204, 'KASIADI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 0, '1', '1', 'BAKALAN 01', '151', '43', 1, 'no_image.jpg'),
+(205, 'SUWARSIH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Menantu', 0, '1', '1', 'BAKALAN 01', '152', '43', 1, 'no_image.jpg'),
+(206, 'SUTRISNO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 0, '1', '1', 'BAKALAN 01', '153', '43', 1, 'no_image.jpg'),
+(207, 'NURHANDAYANI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Menantu', 0, '1', '1', 'BAKALAN 01', '154', '43', 1, 'no_image.jpg'),
+(208, 'SUSANTO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Cucu', 0, '1', '1', 'BAKALAN 01', '155', '43', 1, 'no_image.jpg'),
+(209, 'ABD KOHAR', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '156', '44', 1, '30286135330539l.jpg'),
+(210, 'CARMI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 209, '1', '1', 'BAKALAN 01', '157', '44', 1, 'no_image.jpg'),
+(211, 'SATURI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '158', '45', 1, 'no_image.jpg'),
+(212, 'BAKRI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '159', '46', 1, 'no_image.jpg'),
+(213, 'DASEMI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 212, '1', '1', 'BAKALAN 01', '160', '46', 1, 'no_image.jpg'),
+(214, 'SUPANDRI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 212, '1', '1', 'BAKALAN 01', '161', '46', 1, 'no_image.jpg'),
+(215, 'S EFENDI HIDAYAT', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '162', '47', 1, 'no_image.jpg'),
+(216, 'YUSNIUS DWI ASTUTIK', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 215, '1', '1', 'BAKALAN 01', '163', '47', 1, 'no_image.jpg'),
+(217, 'SALSA DEWANTI APRILIA PUTRI E', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 215, '1', '1', 'BAKALAN 01', '164', '47', 1, 'no_image.jpg'),
+(218, 'SUPARNO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '165', '48', 1, 'no_image.jpg'),
+(219, 'SITI NUR UMATIN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 218, '1', '1', 'BAKALAN 01', '166', '48', 1, 'no_image.jpg'),
+(220, 'ADILIA RISKY MEIDITA PUTRI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 218, '1', '1', 'BAKALAN 01', '167', '48', 1, 'no_image.jpg'),
+(221, 'RAKA DWI RAMADANI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 218, '1', '1', 'BAKALAN 01', '168', '48', 1, 'no_image.jpg'),
+(222, 'SENAWI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '169', '49', 1, 'no_image.jpg'),
+(223, 'JUMANI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 222, '1', '1', 'BAKALAN 01', '170', '49', 1, 'no_image.jpg'),
+(224, 'DEWI ZULAIKAH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 222, '1', '1', 'BAKALAN 01', '171', '49', 1, 'no_image.jpg'),
+(225, 'SIANTO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '172', '50', 1, 'no_image.jpg'),
+(226, 'RUMIATI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 225, '1', '1', 'BAKALAN 01', '173', '50', 1, 'no_image.jpg'),
+(227, 'ARIANTO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 225, '1', '1', 'BAKALAN 01', '174', '50', 1, 'no_image.jpg'),
+(228, 'YUNI RISMAYANTI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 225, '1', '1', 'BAKALAN 01', '175', '50', 1, 'no_image.jpg'),
+(229, 'MINDA RISWANTORO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 225, '1', '1', 'BAKALAN 01', '176', '50', 1, 'no_image.jpg'),
+(230, 'SUROTO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '177', '51', 1, 'no_image.jpg'),
+(231, 'SUTAYA', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 230, '1', '1', 'BAKALAN 01', '178', '51', 1, 'no_image.jpg'),
+(232, 'SUYANTO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 230, '1', '1', 'BAKALAN 01', '179', '51', 1, 'no_image.jpg'),
+(233, 'SUWARNO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '180', '52', 1, 'no_image.jpg'),
+(234, 'YAYUK', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 233, '1', '1', 'BAKALAN 01', '181', '52', 1, 'no_image.jpg'),
+(235, 'MIFTAHUR ROHMAN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 233, '1', '1', 'BAKALAN 01', '182', '52', 1, 'no_image.jpg'),
+(236, 'MUHAMMAD HASBY', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 233, '1', '1', 'BAKALAN 01', '183', '52', 1, 'no_image.jpg'),
+(237, 'MISTI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Orang tua', 233, '1', '1', 'BAKALAN 01', '184', '52', 1, 'no_image.jpg'),
+(238, 'TAMUJI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '185', '53', 1, 'no_image.jpg'),
+(239, 'SUNARSIH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 238, '1', '1', 'BAKALAN 01', '186', '53', 1, 'no_image.jpg'),
+(240, 'AGUS TEGUH PURNOMO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 238, '1', '1', 'BAKALAN 01', '187', '53', 1, 'no_image.jpg'),
+(241, 'MUJIONO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 238, '1', '1', 'BAKALAN 01', '188', '53', 1, 'no_image.jpg'),
+(242, 'SULIS SETIOWATI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 238, '1', '1', 'BAKALAN 01', '189', '53', 1, 'no_image.jpg'),
+(243, 'RANU', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '190', '54', 1, 'no_image.jpg'),
+(244, 'PAINAH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Orang tua', 243, '1', '1', 'BAKALAN 01', '191', '54', 1, 'no_image.jpg'),
+(245, 'BAMBANG IRAWAN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '192', '55', 1, 'no_image.jpg'),
+(246, 'FAJAR DEWI FITRIA', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 245, '1', '1', 'BAKALAN 01', '193', '55', 1, 'no_image.jpg'),
+(247, 'NALA', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 245, '1', '1', 'BAKALAN 01', '194', '55', 1, 'no_image.jpg'),
+(248, 'ADIKNE NALA', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 245, '1', '1', 'BAKALAN 01', '195', '55', 2, 'no_image.jpg'),
+(249, 'ASARI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '196', '56', 1, 'no_image.jpg'),
+(250, 'SUKANTI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 249, '1', '1', 'BAKALAN 01', '197', '56', 1, 'no_image.jpg'),
+(251, 'WAWAN NURYANTO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 249, '1', '1', 'BAKALAN 01', '198', '56', 1, 'no_image.jpg'),
+(252, 'ARI SABARIYAH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 249, '1', '1', 'BAKALAN 01', '199', '56', 1, 'no_image.jpg'),
+(253, 'BOJONE ARI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Menantu', 249, '1', '1', 'BAKALAN 01', '200', '56', 1, 'no_image.jpg'),
+(254, 'SAMAN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '201', '57', 1, 'no_image.jpg'),
+(255, 'WINARSIH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 254, '1', '1', 'BAKALAN 01', '202', '57', 1, 'no_image.jpg'),
+(256, 'HERI ', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 254, '1', '1', 'BAKALAN 01', '203', '57', 1, 'no_image.jpg'),
+(257, 'ADEKNE HERI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 254, '1', '1', 'BAKALAN 01', '204', '57', 1, '27.jpg'),
+(258, 'ADEKNE HERI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 254, '1', '1', 'BAKALAN 01', '205', '57', 1, 'no_image.jpg'),
+(259, 'ASMOIN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '206', '58', 1, 'no_image.jpg'),
+(260, 'SARIPAH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 259, '1', '1', 'BAKALAN 01', '207', '58', 1, 'no_image.jpg'),
+(261, 'IMAM SUPI''I', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '208', '59', 1, 'no_image.jpg'),
+(262, 'WIDYAWATI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 261, '1', '1', 'BAKALAN 01', '209', '59', 1, 'no_image.jpg'),
+(263, 'ANAKE PI''I', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 261, '1', '1', 'BAKALAN 01', '210', '59', 1, 'no_image.jpg'),
+(264, 'MISELAN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '211', '60', 1, 'no_image.jpg'),
+(265, 'TAMSIYAH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 264, '1', '1', 'BAKALAN 01', '212', '60', 1, 'no_image.jpg'),
+(266, 'SUGIONO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 264, '1', '1', 'BAKALAN 01', '213', '60', 1, 'no_image.jpg'),
+(267, 'YANI ANDARI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 264, '1', '1', 'BAKALAN 01', '214', '60', 1, 'no_image.jpg'),
+(268, 'SUPRIADI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '215', '61', 1, 'no_image.jpg'),
+(269, 'LILIK FATIMATUL ZAHRO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 268, '1', '1', 'BAKALAN 01', '216', '61', 1, 'no_image.jpg'),
+(270, 'M. ALI RIZAM ZAMSARI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 268, '1', '1', 'BAKALAN 01', '217', '61', 1, 'no_image.jpg'),
+(271, 'ADEKNE ', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 268, '1', '1', 'BAKALAN 01', '218', '61', 2, 'no_image.jpg'),
+(272, 'ABD FATAH', 'Laki-Laki', 'Malang', '1899-11-30', 'Kawin', 'ISLAM', 'SD', 'Swasta', 'Bisa', 'Kepala Keluarga', 0, '01', '02', 'Bakalan 02', '219', '62', 1, '38_M_Syuhada_B4_Malang.jpg'),
+(273, 'LILIK ASMUNI', 'PEREMPUAN', 'malang', '1899-11-30', 'Kawin', 'ISLAM', '-', '', 'Bisa', 'Istri', 272, '01', '01', 'BAKALAN 01', '220', '62', 1, 'no_image.jpg'),
+(274, 'YAYAN BUDI KUSUMA', 'LAKI-LAKI', 'malang', '1899-11-30', 'Kawin', 'ISLAM', '-', '', 'Bisa', 'Anak', 272, '1', '1', 'BAKALAN 01', '221', '62', 1, 'no_image.jpg'),
+(275, 'ADELIA PUSPITASARI', 'PEREMPUAN', '', '1899-11-30', 'Kawin', 'ISLAM', 'SD', '', 'Bisa', 'Anak', 272, '04', '03', 'BAKALAN 01', '222', '62', 1, 'no_image.jpg'),
+(276, 'WARIMUN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '223', '63', 1, 'no_image.jpg'),
+(277, 'NGAISAH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 276, '1', '1', 'BAKALAN 01', '224', '63', 1, 'no_image.jpg'),
+(278, 'SURYADI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 276, '1', '1', 'BAKALAN 01', '225', '63', 1, 'no_image.jpg'),
+(279, 'BOJONE WIWIK', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 276, '1', '1', 'BAKALAN 01', '226', '63', 1, 'no_image.jpg'),
+(280, 'WIWIK ALFREDA', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 276, '1', '1', 'BAKALAN 01', '227', '63', 1, 'no_image.jpg'),
+(281, 'ANKE WIWIK', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 276, '1', '1', 'BAKALAN 01', '228', '63', 1, 'no_image.jpg'),
+(282, 'SUKARSO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '229', '64', 1, 'no_image.jpg'),
+(283, 'DASRI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 282, '1', '1', 'BAKALAN 01', '230', '64', 1, 'no_image.jpg'),
+(284, 'NANANG PURWANTO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 282, '1', '1', 'BAKALAN 01', '231', '64', 1, 'no_image.jpg'),
+(285, 'DWI ISNANDAR', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 282, '1', '1', 'BAKALAN 01', '232', '64', 1, 'no_image.jpg'),
+(286, 'PRASETYO HERMAWAN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 282, '1', '1', 'BAKALAN 01', '233', '64', 1, 'no_image.jpg'),
+(287, 'RAMU', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '234', '65', 1, 'no_image.jpg'),
+(288, 'SOPIK', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 287, '1', '1', 'BAKALAN 01', '235', '65', 1, 'no_image.jpg'),
+(289, 'KAMID', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 287, '1', '1', 'BAKALAN 01', '236', '65', 1, 'no_image.jpg'),
+(290, 'YULIANA', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Menantu', 287, '1', '1', 'BAKALAN 01', '237', '65', 1, 'no_image.jpg'),
+(291, 'MOH. REZAMIL ULA', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Cucu', 287, '1', '1', 'BAKALAN 01', '238', '65', 1, 'no_image.jpg'),
+(292, 'RIKO DWI FERDIANSAH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Cucu', 287, '1', '1', 'BAKALAN 01', '239', '65', 1, 'no_image.jpg'),
+(293, 'BUARI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '240', '66', 1, 'no_image.jpg'),
+(294, 'WARSITI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 293, '1', '1', 'BAKALAN 01', '241', '66', 1, 'no_image.jpg'),
+(295, 'SRI WAHYUNI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 293, '1', '1', 'BAKALAN 01', '242', '66', 1, 'no_image.jpg'),
+(296, 'EVA KURNIAWATI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 293, '1', '1', 'BAKALAN 01', '243', '66', 1, 'no_image.jpg'),
+(297, 'NGADI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '244', '67', 1, 'no_image.jpg'),
+(298, 'TAMINAH', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 297, '1', '1', 'BAKALAN 01', '245', '67', 1, 'no_image.jpg'),
+(299, 'DESI WIDAYATI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 297, '1', '1', 'BAKALAN 01', '246', '67', 1, 'no_image.jpg'),
+(300, 'MULYONO', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 0, '1', '1', 'BAKALAN 01', '247', '68', 1, 'no_image.jpg'),
+(301, 'MISTIN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Menantu', 0, '1', '1', 'BAKALAN 01', '248', '68', 1, 'no_image.jpg'),
+(302, 'ANAKE MOL', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Cucu', 0, '1', '1', 'BAKALAN 01', '249', '68', 3, 'no_image.jpg'),
+(303, 'DULATIP', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Kepala Keluarga', 0, '1', '1', 'BAKALAN 01', '250', '69', 1, 'no_image.jpg'),
+(304, 'TUMPUK', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Istri', 303, '1', '1', 'BAKALAN 01', '251', '69', 1, 'no_image.jpg'),
+(305, 'ENDANG WIDAYATI', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Anak', 303, '1', '1', 'BAKALAN 01', '252', '69', 1, 'no_image.jpg'),
+(306, 'SOLIKIN', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Menantu', 303, '1', '1', 'BAKALAN 01', '253', '69', 1, 'no_image.jpg'),
+(307, 'TEGAR YESI PRATAMA', '', '', '0000-00-00', '', 'ISLAM', '-', '', '', 'Cucu', 303, '1', '1', 'BAKALAN 01', '254', '69', 1, 'no_image.jpg'),
+(308, 'NARI ', 'LAKI-LAKI', 'MALANG', '1936-01-05', 'Kawin', 'ISLAM', '-', 'Petani', 'TIDAK BISA', 'Kepala Keluarga', 0, '1', '5', 'JAMURAN', '255', '70', 1, 'no_image.jpg'),
+(309, 'SUPIANAH', 'PEREMPUAN', 'MALANG', '1945-01-10', 'Kawin', 'ISLAM', '-', 'Petani', 'TIDAK BISA', 'Istri', 308, '1', '5', 'JAMURAN', '256', '70', 1, 'no_image.jpg'),
+(310, 'NGATMANI', 'LAKI-LAKI', 'MALANG', '1929-11-02', 'Kawin', 'ISLAM', '-', 'Petani', 'TIDAK BISA', 'Kepala Keluarga', 0, '1', '5', 'JAMURAN', '257', '71', 1, 'no_image.jpg'),
+(311, 'SENEPAH', 'PEREMPUAN', 'MALANG', '1927-02-15', 'Kawin', 'ISLAM', '-', 'Petani', 'TIDAK BISA', 'Istri', 310, '1', '5', 'JAMURAN', '258', '71', 1, 'no_image.jpg'),
+(312, 'HUSEN', 'LAKI-LAKI', 'MALANG', '1964-04-15', 'Kawin', 'ISLAM', 'SD', 'Petani', 'BISA', 'Kepala Keluarga', 0, '1', '5', 'JAMURAN', '259', '72', 1, 'no_image.jpg'),
+(313, 'NURHAYATI', 'PEREMPUAN', 'MALANG', '1973-06-21', 'Kawin', 'ISLAM', 'SD', 'Petani', 'BISA', 'Istri', 312, '1', '5', 'JAMURAN', '260', '72', 1, 'no_image.jpg'),
+(314, 'KHOIRUDDIN', 'LAKI-LAKI', 'MALANG', '1994-04-22', 'Belum Kawin', 'ISLAM', 'SD', 'Petani', 'BISA', 'Anak', 312, '1', '5', 'JAMURAN', '261', '72', 1, 'no_image.jpg'),
+(315, 'WAHYUDI', 'LAKI-LAKI', 'MALANG', '0000-00-00', 'Belum Kawin', 'ISLAM', 'SD', 'Petani', 'BISA', 'Anak', 312, '1', '5', 'JAMURAN', '262', '72', 1, 'no_image.jpg'),
+(316, 'A.BASHORI', 'LAKI-LAKI', 'MALANG', '2003-07-07', 'Belum Kawin', 'ISLAM', 'SD', 'Tidak Bekerja', 'BISA', 'Anak', 312, '1', '5', 'JAMURAN', '263', '72', 1, '100_2956.jpg'),
+(317, 'SENERI', 'LAKI-LAKI', 'MALANG', '1965-07-01', 'Cerai Hidup', 'ISLAM', 'SD', 'Petani', 'BISA', 'Kepala Keluarga', 0, '1', '5', 'JAMURAN', '264', '73', 1, 'no_image.jpg'),
+(318, 'MULYANTO TUMAN', 'LAKI-LAKI', 'MALANG', '1969-05-03', 'Kawin', 'ISLAM', 'SD', 'Petani', '', '', 0, '', '', '', '265', '74', 1, 'no_image.jpg'),
+(319, 'MAISAROH', 'PEREMPUAN', 'MALANG', '1977-04-11', 'Kawin', 'ISLAM', 'SD', 'Petani', '', '', 0, '', '', '', '266', '74', 1, 'no_image.jpg'),
+(320, 'DIAN YOFI OKTIVANTA', 'LAKI-LAKI', 'MALANG', '1997-02-23', 'Belum Kawin', 'ISLAM', 'SD', 'Petani', '', '', 0, '', '', '', '267', '', 1, 'no_image.jpg'),
+(321, 'TIO SANANDI PUTRA', 'LAKI-LAKI', 'MALANG', '2007-02-04', 'Belum Kawin', 'ISLAM', 'SD', 'Petani', '', '', 0, '', '', '', '268', '', 1, 'no_image.jpg'),
+(322, 'M.IHSAN', 'LAKI-LAKI', 'MALANG', '1962-02-09', 'Kawin', 'ISLAM', 'SD', 'Petani', '', '', 0, '', '', '', '269', '', 1, 'no_image.jpg'),
+(323, 'UMYANAH', 'PEREMPUAN', 'MALANG', '0000-00-00', 'Kawin', 'ISLAM', 'SD', 'Petani', '', '', 0, '', '', '', '270', '', 1, 'no_image.jpg'),
+(324, 'AHMAD ULFI', 'LAKI-LAKI', 'MALANG', '1988-08-16', 'Anak', 'ISLAM', 'SLTP', 'Pelajar', '', '', 0, '', '', '', '271', '', 1, 'no_image.jpg'),
+(325, 'RIZQON HASANA', 'PEREMPUAN', 'MALANG', '1990-07-09', 'Anak', 'ISLAM', 'SLTP', 'Pelajar', '', '', 0, '', '', '', '272', '', 1, 'no_image.jpg'),
+(326, 'SALIMAH B.SAFII', 'PEREMPUAN', 'MALANG', '1922-01-19', 'Nenek', 'ISLAM', '-', 'Petani', '', '', 0, '', '', '', '273', '', 1, 'no_image.jpg'),
+(327, 'ROISATUL ISLAMIYAH', 'LAKI-LAKI', 'MALANG', '2005-07-05', 'Anak', 'ISLAM', 'SD', 'Pelajar', '', '', 0, '', '', '', '274', '', 1, 'no_image.jpg'),
+(328, 'MUSTOFA BISRI', 'LAKI-LAKI', 'Malang', '2010-03-13', 'BELUM KAWIN', 'ISLAM', '-', '-', 'Tidak Bisa', 'Anak', 28, '1', '8', 'BANJARSARI 01', '-', '1908050011', 1, 'no_image.jpg'),
+(334, 'Fitriatul', 'PEREMPUAN', 'Malang', '2010-02-07', 'BELUM KAWIN', 'ISLAM', '-', '-', 'Tidak Bisa', 'Anak', 20, '3', '1', 'BAKALAN 01', '-', '2005050021', 1, 'no_image.jpg'),
+(336, 'aris', 'LAKI-LAKI', 'Malang', '2010-03-31', 'BELUM KAWIN', 'ISLAM', '-', '-', 'Tidak Bisa', 'Anak', 16, '3', '1', 'BAKALAN 01', '-', '709040360', 1, 'no_image.jpg'),
+(337, 'saf', 'LAKI-LAKI', 'sdf', '2010-04-01', 'Belum Kawin', 'ISLAM', 'SD', 'saf', 'Bisa', 'Kepala Keluarga', 0, '10', '9', 'BAKALAN 02', '343', '1244.93434', 1, 'no_image.jpg');
+INSERT INTO `tpenduduk` (`id_penduduk`, `nama`, `kelamin`, `tempat_lahir`, `tanggal_lahir`, `status_kawin`, `agama`, `pendidikan`, `pekerjaan`, `baca_tulis`, `h_keluarga`, `anggota_dari`, `rt`, `rw`, `dusun`, `no_ktp`, `no_kk`, `status`, `picture`) VALUES
+(338, 'fandi', 'LAKI-LAKI', 'sdf', '2010-04-01', 'Belum Kawin', 'ISLAM', 'SD', 'saf', 'Bisa', 'Anak', 337, '10', '9', 'BAKALAN 02', '343', '1244.93434', 1, 'no_image.jpg'),
+(341, 'ashadi', 'Laki-Laki', 'malang', '2010-04-02', 'Belum Kawin', 'Islam', 'SD', 'tani', 'Bisa', 'Anak', 0, '10', '03', 'Bakalan 01', '123456789', '0999', 1, 'no_image.jpg'),
+(342, 'tewr', 'Laki-Laki', 'malang', '2010-04-03', 'Belum Kawin', '-', '-', '09', 'Bisa', 'Anak', 0, '01', '03', 'Bakalan 01', 'kakek', '987/988', 1, 'no_image.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tpindah`
+--
+
+CREATE TABLE IF NOT EXISTS `tpindah` (
+  `id_pindah` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_penduduk` bigint(20) NOT NULL,
+  `tgl_pindah` date NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `kelurahan` varchar(255) NOT NULL,
+  `kecamatan` varchar(255) NOT NULL,
+  `kabupaten` varchar(255) NOT NULL,
+  `propinsi` varchar(255) NOT NULL,
+  `alasan_pindah` varchar(255) NOT NULL,
+  `group_pindah` varchar(32) NOT NULL,
+  PRIMARY KEY (`id_pindah`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data untuk tabel `tpindah`
+--
+
+INSERT INTO `tpindah` (`id_pindah`, `id_penduduk`, `tgl_pindah`, `alamat`, `kelurahan`, `kecamatan`, `kabupaten`, `propinsi`, `alasan_pindah`, `group_pindah`) VALUES
+(1, 197, '2010-03-04', 'Dukuh Kupang', 'Kupang Jaya', 'Kupang', 'Surabayaj', 'Jawa Timur', 'Bekerja', '20100313121119'),
+(2, 302, '2010-03-04', 'Dukuh Kupang', 'Kupang Jaya', 'Kupang', 'Surabayaj', 'Jawa Timur', 'Bekerja', '20100313121119');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tsurat`
+--
+
+CREATE TABLE IF NOT EXISTS `tsurat` (
+  `id_surat` int(11) NOT NULL AUTO_INCREMENT,
+  `no_surat` varchar(225) NOT NULL,
+  `id_penduduk` int(11) NOT NULL,
+  `jenis_surat` varchar(255) NOT NULL,
+  `tgl_buat` date NOT NULL,
+  `tgl_ttd` date NOT NULL,
+  `keterangan_1` text NOT NULL,
+  `keterangan_2` text NOT NULL,
+  `tambahan` text NOT NULL,
+  PRIMARY KEY (`id_surat`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=59 ;
+
+--
+-- Dumping data untuk tabel `tsurat`
+--
+
+INSERT INTO `tsurat` (`id_surat`, `no_surat`, `id_penduduk`, `jenis_surat`, `tgl_buat`, `tgl_ttd`, `keterangan_1`, `keterangan_2`, `tambahan`) VALUES
+(57, '90', 257, 'KTP', '2010-04-02', '2010-04-02', 'sebagai penduduk sementara\n', '', '02/04/2010'),
+(58, '09', 1, 'GAKIN', '2010-04-03', '2010-04-09', 'uuujhhh', '', ''),
+(52, '32', 99, 'KTP', '2010-04-02', '2010-04-02', 'indentitas diri sementara dan Persyaratan Melamar Kerja\n', '', '23/04/2010'),
+(56, '33', 209, 'SK', '2010-04-02', '2010-04-01', 'AFD', '', ''),
+(53, '02', 99, 'GAKIN', '2010-04-02', '2010-04-09', 'akses', '', ''),
+(54, '01', 69, 'SKCK', '2010-04-02', '2010-04-08', '122', '', ''),
+(55, '43', 115, 'BEASISWA', '2010-04-02', '2010-03-31', 'AKU A', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(64) DEFAULT NULL,
+  `group_id` int(11) DEFAULT NULL,
+  `real_name` varchar(128) DEFAULT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `count_login` int(11) DEFAULT '0',
+  `date_created` datetime DEFAULT NULL,
+  `user_password` varchar(128) DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_name` (`user_name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_name`, `group_id`, `real_name`, `last_login`, `count_login`, `date_created`, `user_password`, `is_active`) VALUES
+(1, 'admin', 1, 'Administrator System', '2010-04-07 19:29:17', 85, '2010-02-28 15:03:33', 'd2lubmVy', 1),
+(19, 'vita', 4, 'Vita Putri', '2010-04-02 11:29:42', 7, '2010-03-03 08:48:39', 'dml0YQ==', 1),
+(18, 'luna', 5, 'Luna Maya', '2010-03-15 21:35:55', 2, '2010-03-03 08:48:56', 'bHVuYQ==', 1),
+(20, 'rifai', 1, 'M Rifai', '2010-03-14 18:44:21', 5, '2010-03-03 08:48:18', 'cmlmYWk=', 1),
+(21, 'ashadi', 1, 'Ashadi Cahyadi', '2010-03-13 12:35:46', 4, '2010-03-03 08:47:57', 'd2lubmVy', 1),
+(22, 'dambez', 2, 'Darusman', '2010-03-07 12:56:52', 0, '2010-03-07 12:56:40', 'MTIz', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user_group`
+--
+
+CREATE TABLE IF NOT EXISTS `user_group` (
+  `group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `group_name` varchar(128) DEFAULT NULL,
+  `group_description` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`group_id`),
+  UNIQUE KEY `group_name` (`group_name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data untuk tabel `user_group`
+--
+
+INSERT INTO `user_group` (`group_id`, `group_name`, `group_description`) VALUES
+(1, 'Administrator', 'Super Administrator'),
+(2, 'Operator', 'Operator Input Data'),
+(4, 'Reporter', 'Reporting User'),
+(5, 'Analisys Data', 'Analys Data');

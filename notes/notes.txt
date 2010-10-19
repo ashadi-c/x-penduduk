@@ -1,0 +1,47 @@
+    treePanel.on('click', function(n){
+    	var sn = this.selModel.selNode || {}; // selNode is null on initial selection
+    	if(n.leaf && n.id != sn.id){  // ignore clicks on folders and currently selected node 
+		id_panel = n.id +'-panel'; 
+		if (id_panel != Ext.getCmp('content-panel').layout.activeItem.id) {
+			Ext.getCmp('content-panel').layout.activeItem.purgeListeners();
+			Ext.getCmp('content-panel').remove(Ext.getCmp('content-panel').layout.activeItem); 
+			/**letakkan code disini untuk menginiliasi ulang component dengan ajax  
+			 jika sukses maka jalankan run (berguna agar text box muncul setelah di remove.. 
+			**/ 
+			run = "Ext.getCmp('content-panel').add(" + n.id + ")"; 
+			eval(run); 
+		}
+
+    		Ext.getCmp('content-panel').layout.setActiveItem(n.id + '-panel');
+    		if(!detailEl){
+    			var bd = Ext.getCmp('details-panel').body;
+    			bd.update('').setStyle('background','#fff');
+    			detailEl = bd.createChild(); //create default empty div
+    		}
+    		detailEl.hide().update(Ext.getDom(n.id+'-details').innerHTML).slideIn('l', {stopFx:true,duration:.2});
+    	}
+    });
+
+
+	var contentPanel = {
+		id: 'content-panel',
+		region: 'center', // this is what makes this panel into a region within the containing layout
+		layout: 'card',
+		margins: '2 5 5 0',
+		activeItem: 0,
+		border: false,
+		items: [
+			// from basic.js:
+			start
+		]
+	};
+
+
+jika error berarti cek nama id node nya apakah sama dengan nama componen yang akan di load.
+dan active itemnya apakah sama dengan panel nya. .
+
+untuk mengakses component dalam form : 
+a = absform.getComponent(itemsIndex:number);
+atau 
+a = absform.items.item(itemsIndex); 
+

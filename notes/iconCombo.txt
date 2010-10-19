@@ -1,0 +1,16 @@
+	combo = new Ext.ux.IconCombo({
+                store: new Ext.data.SimpleStore({
+                    fields: ['icon'],
+                    data: [
+                        ['app-grid'],
+                        ['lock'],
+                        ['login']
+                    ]
+                }),
+                valueField: 'icon',
+                displayField: 'icon',
+                iconClsField: 'icon',
+                triggerAction: 'all',
+                mode: 'local'
+                //width: 160
+				}); 

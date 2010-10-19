@@ -1,0 +1,6 @@
+AGAR gambar default transaparant tidak diload dari http://extjs 
+
+tambahkan script ini : 
+   <script type="text/javascript" src="extjs/adapter/ext/ext-base.js"></script>
+   <script type="text/javascript">Ext.BLANK_IMAGE_URL = "extjs/resources/images/default/s.gif"</script>
+  
