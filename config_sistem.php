@@ -1,5 +1,4 @@
 <?php
-// MySQL configuration
 define('HOST','localhost');        // Your database server
 define('USER','root');        // Your mysql username
 define('PASS','');                // Your mysql password
