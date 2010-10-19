@@ -35,6 +35,5 @@
 				if (file_exists("ajax-admin/$ajax"))
 					include_once("ajax-admin/$ajax");
 		}
-	}
-	
+	}	
 ?> 
