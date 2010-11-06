@@ -252,8 +252,8 @@ var gridSurat = new Ext.grid.GridPanel({
 
           }
       },'-',{
-          text:'Print Letter',
-          iconCls:'report-pdf',
+          text:'Cetak Surat',
+          iconCls:'report-word',
           disabled: checkRole(!ROLE.PRINT_DATA),
           tooltip: {
               title:'Cetak Data',
@@ -346,7 +346,7 @@ function setInputan(v){
         case 'BEASISWA':
             frm_edit.get(5).setVisible(false);
             frm_edit.get(6).setVisible(true);
-            frm_edit.get(7).setVisible(false);
+            //frm_edit.get(7).setVisible(false);
         break;
         case 'SKCK':
             frm_edit.get(5).setVisible(false);

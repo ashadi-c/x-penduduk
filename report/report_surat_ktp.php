@@ -1,4 +1,37 @@
 <?php
+
+include_once("includes/phpword/PHPWord.php");
+$template_file = "template_word/s_ktp.doc";
+$download_file ="download_word/surat_ktp.doc";
+
+
+$masa_berlaku = explode('/', $rs->fields['tambahan']);
+$masa_berlaku = array_reverse($masa_berlaku);
+$masa_berlaku = implode('-',$masa_berlaku);
+
+
+$PHPWord = new PHPWord();
+$document = $PHPWord->loadTemplate($template_file);
+$document->setValue('nomor','470/'.$rs->fields['no_surat'].'/421.621.010/'.getYear($rs->fields['tgl_ttd']));
+$document->setValue('nama', $rs->fields['nama']);
+$document->setValue('nama1', $rs->fields['nama']);
+$document->setValue('jk', ucwords($rs->fields['kelamin']));
+$document->setValue('tgl_lahir', ucwords($rs->fields['tempat_lahir']). ', '. formatDate2($rs->fields['tanggal_lahir']));
+$document->setValue('status', ucwords($rs->fields['status_kawin']));
+$document->setValue('agama', ucwords($rs->fields['agama']));
+$document->setValue('pekerjaan', ucwords($rs->fields['pekerjaan']));
+$document->setValue('keterangan', ucwords($rs->fields['keterangan_1']));
+$document->setValue('tanggal', formatDate2($rs->fields['tgl_ttd']));
+$document->setValue('dusun', ucwords($rs->fields['dusun']));
+$document->setValue('rt', addNull($rs->fields['rt']).'/'.addNull($rs->fields['rw']));
+$document->setValue('desa', 'Bakalan');
+$document->setValue('berlaku', formatDate2($masa_berlaku));
+
+$document->save($download_file);
+echo "<h1>Surat Berhasil di buat</h1>";
+echo "<h3><a href='$download_file'>Silahkan download disini</a></h3>"
+
+/**
 include_once("includes/php-pdf/class.ezpdf.php");
 $pdf = new Cezpdf('legal');
 $pdf->ezSetCmMargins(2,2,2,2);
@@ -20,7 +53,6 @@ $option_left = Array('justification'=>'left','spacing'=>1.5);
 $option_full = Array('justification'=>'full','spacing'=>1.5);
 $pdf->ezText('Keterangan Penduduk Sementara ini diberikan kepada :',12,$option_left);
 $pdf->ezSetDy(-12);
-	/**buat Colom Array **/
 $cols = Array(
                         'name'=>'',
                         'sep'=>'',
@@ -73,7 +105,7 @@ $cols = Array(
                 );
 $options = Array(
                         'shaded'=>0,
-                        'fontSize'=>8,
+                        'fontSize'=>10,
                         'titleFontSize'=>10,
                         'showLines'=>1,
                         'showHeadings'=>1,
@@ -85,7 +117,7 @@ $options = Array(
                                     'tanggal_lahir'=>Array('width'=>70,'justification'=>'center'),
                                     'status'=>Array('width'=>80,'justification'=>'center'),
                                     'pendidikan'=>Array('width'=>80,'justification'=>'center'),
-                                    'no_ktp'=>Array('width'=>100,'justification'=>'center')
+                                    'no_ktp'=>Array('width'=>110,'justification'=>'center')
                                 )
                 );
 
@@ -133,5 +165,5 @@ $options = Array(
        $pdf->ezTable($data1,$cols,'',$options);
        $pdf->addJpegFromFile('upload_foto/'.$rs->fields['picture'],325,305,94,124);
 $pdf->ezStream();
-
+**/
 ?>
